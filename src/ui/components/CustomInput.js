@@ -4,7 +4,16 @@ import {colors} from '../../themes/Colors';
 import {units} from '../../themes/Units';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const CustomInput = ({value, placeHolder, onChangeText, secure, type}) => {
+const CustomInput = ({
+  value,
+  placeHolder,
+  onChangeText,
+  secure,
+  type,
+  width,
+  height,
+  fontSize,
+}) => {
   const [showPassword, setShowPassword] = useState(secure);
 
   const handleIcon = () => {
@@ -12,10 +21,10 @@ const CustomInput = ({value, placeHolder, onChangeText, secure, type}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {width: width, height: height}]}>
       <TextInput
         placeholder={placeHolder}
-        style={styles.input}
+        style={[styles.input, {fontSize: fontSize}]}
         value={value}
         onChangeText={onChangeText}
         keyboardType={type}
@@ -40,9 +49,9 @@ export default CustomInput;
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomWidth: 2,
-    borderBottomColor: colors.DARRWHITE,
-    borderBottomRadius: 10,
+    borderWidth: 1,
+    borderColor: colors.LIGHTGREY,
+    borderRadius: 10,
     shadowColor: colors.LIGHTGREY,
     shadowOffset: {
       width: 0,
@@ -54,9 +63,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    fontSize: 18,
     flex: 1,
-    fontFamily: 'Museo Sans'
+    fontFamily: 'Roboto-Medium',
+    paddingLeft: '5%',
   },
   icon: {
     marginRight: units.width / 16,

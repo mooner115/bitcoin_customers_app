@@ -4,7 +4,13 @@ import {colors} from '../../themes/Colors';
 import {units} from '../../themes/Units';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const CustomeNumberInput = ({value, placeHolder, onChangeText, secure, type}) => {
+const CustomeNumberInput = ({
+  value,
+  placeHolder,
+  onChangeText,
+  secure,
+  type,
+}) => {
   const [showPassword, setShowPassword] = useState(secure);
 
   const handleIcon = () => {
@@ -34,7 +40,7 @@ const styles = StyleSheet.create({
     width: units.width / 8.33,
     marginHorizontal: units.width / 50,
     borderBottomWidth: 2,
-    borderBottomColor: colors.DARRWHITE,
+    borderBottomColor: colors.DARKWHITE,
     borderBottomRadius: 10,
     shadowColor: colors.LIGHTGREY,
     shadowOffset: {
@@ -51,7 +57,7 @@ const styles = StyleSheet.create({
     paddingLeft: units.width / 100,
     fontSize: 27,
     flex: 1,
-    fontFamily: 'Museo Sans',
+    fontFamily: 'Roboto-Medium',
     color: '#0F112B',
   },
   icon: {

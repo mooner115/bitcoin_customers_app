@@ -19,6 +19,7 @@ const authFirebase = () => {
   };
 
   const createUser = (email, password, backLogin) => {
+    backLogin();
   };
 
   return {loading, createUser, loginUser};
