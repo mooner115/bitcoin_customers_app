@@ -23,8 +23,10 @@ const Footer = ({navigation, route}) => {
         onPress={() => navigate(routes.LISTNAVIGATOR, routes.LIST)}>
         <Image
           source={require('../../assets/images/menu.png')}
-          tintColor={isMatched(routes.LIST) ? colors.ORANGE : colors.WHITE}
-          style={styles.icon}
+          style={[
+            styles.icon,
+            {tintColor: isMatched(routes.LIST) ? colors.ORANGE : colors.WHITE},
+          ]}
         />
       </TouchableOpacity>
 
@@ -33,8 +35,10 @@ const Footer = ({navigation, route}) => {
         onPress={() => navigate(routes.MAPNAVIGATOR, routes.MAP)}>
         <Image
           source={require('../../assets/images/map.png')}
-          tintColor={isMatched(routes.MAP) ? colors.ORANGE : colors.WHITE}
-          style={styles.icon}
+          style={[
+            styles.icon,
+            {tintColor: isMatched(routes.LIST) ? colors.ORANGE : colors.WHITE},
+          ]}
         />
       </TouchableOpacity>
 
@@ -52,8 +56,10 @@ const Footer = ({navigation, route}) => {
         onPress={() => navigate(routes.LIKEDNAVIGATOR, routes.LIKED)}>
         <Image
           source={require('../../assets/images/love.png')}
-          tintColor={isMatched(routes.LIKED) ? colors.ORANGE : colors.WHITE}
-          style={styles.icon}
+          style={[
+            styles.icon,
+            {tintColor: isMatched(routes.LIST) ? colors.ORANGE : colors.WHITE},
+          ]}
         />
       </TouchableOpacity>
 
@@ -62,8 +68,10 @@ const Footer = ({navigation, route}) => {
         onPress={() => navigate(routes.PROFILENAVIGATOR, routes.PROFILE)}>
         <Image
           source={require('../../assets/images/user.png')}
-          tintColor={isMatched(routes.PROFILE) ? colors.ORANGE : colors.WHITE}
-          style={styles.icon}
+          style={[
+            styles.icon,
+            {tintColor: isMatched(routes.LIST) ? colors.ORANGE : colors.WHITE},
+          ]}
         />
       </TouchableOpacity>
     </View>

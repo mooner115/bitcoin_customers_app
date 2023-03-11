@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {
-  StatusBar,
   StyleSheet,
   View,
   TouchableOpacity,
@@ -15,6 +14,7 @@ import {routes} from '../../navigation/routes';
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {DrawerActions} from '@react-navigation/native';
+import CustomStatusBar from '../components/CustomStatusBar';
 
 const Header = ({navigation, route}) => {
   const [pathname, setPathName] = useState('');
@@ -47,7 +47,7 @@ const Header = ({navigation, route}) => {
 
   return (
     <SafeAreaView>
-      <StatusBar backgroundColor={colors.DARK} barStyle={'light-content'} />
+      <CustomStatusBar bgColor={colors.DARK} barStyle={'light-content'} />
 
       <View
         style={
@@ -146,8 +146,7 @@ const Header = ({navigation, route}) => {
                 onPress={() => navigate(routes.FILTER, routes.FILTER)}>
                 <Image
                   source={require('../../assets/images/filter.png')}
-                  style={styles.filter_icon}
-                  tintColor={colors.WHITE}
+                  style={[styles.filter_icon, {tintColor: colors.WHITE}]}
                 />
               </TouchableOpacity>
               <TouchableOpacity
@@ -155,8 +154,7 @@ const Header = ({navigation, route}) => {
                 activeOpacity={0.8}>
                 <Image
                   source={require('../../assets/images/alarm.png')}
-                  style={styles.alarm_icon}
-                  tintColor={colors.WHITE}
+                  style={[styles.alarm_icon, {tintColor: colors.WHITE}]}
                 />
               </TouchableOpacity>
             </View>
@@ -174,8 +172,7 @@ const Header = ({navigation, route}) => {
                 }>
                 <Image
                   source={require('../../assets/images/alarm_setting.png')}
-                  style={styles.filter_icon}
-                  tintColor={colors.WHITE}
+                  style={[styles.filter_icon, {tintColor: colors.WHITE}]}
                 />
               </TouchableOpacity>
             )}
@@ -186,8 +183,7 @@ const Header = ({navigation, route}) => {
                 onPress={() => navigate(routes.NOTIFYNAVIGATOR, routes.NOTIFY)}>
                 <Image
                   source={require('../../assets/images/alarm_setting.png')}
-                  style={styles.filter_icon}
-                  tintColor={colors.ORANGE}
+                  style={[styles.filter_icon, {tintColor: colors.WHITE}]}
                 />
               </TouchableOpacity>
             )}
@@ -198,8 +194,7 @@ const Header = ({navigation, route}) => {
                 onPress={() => navigate(routes.MAPNAVIGATOR, routes.MAP)}>
                 <Image
                   source={require('../../assets/images/close.png')}
-                  style={styles.back_icon}
-                  tintColor={colors.WHITE}
+                  style={[styles.back_icon, {tintColor: colors.WHITE}]}
                 />
               </TouchableOpacity>
             )}
@@ -210,8 +205,7 @@ const Header = ({navigation, route}) => {
                 onPress={() => navigate(routes.MAPNAVIGATOR, routes.MAP)}>
                 <Image
                   source={require('../../assets/images/close.png')}
-                  style={styles.back_icon}
-                  tintColor={colors.DARK}
+                  style={[styles.back_icon, {tintColor: colors.DARK}]}
                 />
               </TouchableOpacity>
             )}
