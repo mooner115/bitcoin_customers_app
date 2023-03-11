@@ -1,10 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Image, StyleSheet, View, Platform} from 'react-native';
-import MapView, {
-  Marker,
-  PROVIDER_GOOGLE,
-  PROVIDER_DEFAULT,
-} from 'react-native-maps';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {colors} from '../../themes/Colors';
 
 const CustomMap = ({height, places, handleSelect, position}) => {
@@ -33,7 +29,7 @@ const CustomMap = ({height, places, handleSelect, position}) => {
 
   return (
     <MapView
-      provider={Platform.OS === 'android' ? PROVIDER_GOOGLE : PROVIDER_DEFAULT} // remove if not using Google Maps
+      provider={PROVIDER_GOOGLE} // remove if not using Google Maps
       style={{
         height: height,
         width: '100%',
