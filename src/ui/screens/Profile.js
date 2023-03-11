@@ -124,7 +124,7 @@ const Profile = navigation => {
             style={styles.image}
             resizeMode="cover">
             <Image
-              source={require('../../assets/images/AVATAR.png')}
+              source={require('../../assets/images/avatar.png')}
               style={styles.avatar}
             />
           </ImageBackground>
