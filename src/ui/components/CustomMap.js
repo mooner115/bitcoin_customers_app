@@ -8,15 +8,6 @@ const CustomMap = ({height, places, handleSelect, position}) => {
 
   const [region, setRegion] = useState({});
 
-  const THEMES = {
-    streets: 'mapbox://styles/mapbox/streets-v11',
-    outdoors: 'mapbox://styles/mapbox/outdoors-v11',
-    light: 'mapbox://styles/mapbox/light-v10',
-    dark: 'mapbox://styles/mapbox/dark-v10',
-    satellite: 'mapbox://styles/mapbox/satellite-v9',
-    satelliteStreets: 'mapbox://styles/mapbox/satellite-streets-v11',
-  };
-
   useEffect(() => {
     setMarks(places);
     setRegion({
@@ -35,8 +26,7 @@ const CustomMap = ({height, places, handleSelect, position}) => {
         width: '100%',
       }}
       region={region}
-      mapType={'standard'}
-      customMapStyle={THEMES}>
+      mapType={'standard'}>
       {marks &&
         marks.map(mark => (
           <Marker
