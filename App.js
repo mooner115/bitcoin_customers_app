@@ -6,11 +6,9 @@ import {store} from './src/context/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistStore} from 'redux-persist';
 import 'react-native-gesture-handler';
-import {enableLatestRenderer} from 'react-native-maps';
 
 const App = () => {
   const perStore = persistStore(store);
-  enableLatestRenderer();
 
   return (
     <Provider store={store}>
