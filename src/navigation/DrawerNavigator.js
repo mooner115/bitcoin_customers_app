@@ -17,6 +17,7 @@ import LikedNavigator from './LikedNavigator';
 import MapNavigator from './MapNavigator';
 import Filter from '../ui/screens/setting/Filter';
 import NotifyNavigator from './NotifyNavigator';
+import {tintColor} from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
 
 const Drawer = createDrawerNavigator();
 
@@ -45,8 +46,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/user.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}
@@ -60,8 +63,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/wallet.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}
@@ -75,8 +80,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/file.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}
@@ -90,8 +97,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/star.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}
@@ -105,8 +114,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/bubble-chat.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}
@@ -120,8 +131,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/follow.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}
@@ -135,8 +148,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/question.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}
@@ -150,8 +165,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/phone-call.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}
@@ -165,8 +182,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/information.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}
@@ -187,8 +206,10 @@ const DrawerNavigator = () => {
           drawerIcon: ({focused}) => (
             <Image
               source={require('../assets/images/logout.png')}
-              style={styles.drawer}
-              tintColor={focused ? colors.ORANGE : colors.DARK}
+              style={[
+                styles.drawer,
+                {tintColor: focused ? colors.ORANGE : colors.DARK},
+              ]}
             />
           ),
         }}

@@ -9,8 +9,8 @@ pod 'Google-Maps-iOS-Utils', :git => 'https://github.com/Simon-TechForm/google-m
 rn_maps_path = '../node_modules/react-native-maps'
 pod 'react-native-google-maps', :path => rn_maps_path
 
-pod 'GoogleUtilities', :modular_headers => true
-pod 'react-native-config', :path => '../node_modules/react-native-config/react-native-config.podspec'
+# pod 'GoogleUtilities', :modular_headers => true
+# pod 'react-native-config', :path => '../node_modules/react-native-config/react-native-config.podspec'
 
 target 'bLinked' do
   config = use_native_modules!
