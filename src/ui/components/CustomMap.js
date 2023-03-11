@@ -29,7 +29,7 @@ const CustomMap = ({height, places, handleSelect, position}) => {
 
   return (
     <MapView
-      provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+      pprovider={Platform.OS === 'android' ? PROVIDER_GOOGLE : PROVIDER_DEFAULT} // remove if not using Google Maps
       style={{
         height: height,
         width: '100%',
