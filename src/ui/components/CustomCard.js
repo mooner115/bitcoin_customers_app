@@ -175,7 +175,7 @@ const CustomCard = ({navigation, data}) => {
             style={{
               width: 30,
               height: 26,
-              tintColor: data.isFavourite ? colors.ORANGE : colors.WHITE,,
+              tintColor: data.isFavourite ? colors.ORANGE : colors.WHITE,
             }}
           />
         </View>
