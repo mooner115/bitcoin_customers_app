@@ -403,6 +403,6 @@ const styles = StyleSheet.create({
     paddingLeft: 40,
     color: colors.DARK,
     textAlign: 'center',
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Roboto-Medium',
   },
 });
