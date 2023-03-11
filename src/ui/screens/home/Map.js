@@ -199,10 +199,10 @@ const Map = ({navigation}) => {
                     style={{
                       width: 30,
                       height: 26,
+                      tintColor: detail.isFavourite
+                        ? colors.ORANGE
+                        : colors.WHITE,
                     }}
-                    tintColor={
-                      detail.isFavourite ? colors.ORANGE : colors.WHITE
-                    }
                   />
                 </View>
               </View>

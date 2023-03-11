@@ -66,8 +66,14 @@ const Header = ({navigation, route}) => {
           <TouchableOpacity activeOpacity={0.6} onPress={handleOpenDrawer}>
             <Image
               source={require('../../assets/images/more.png')}
-              style={styles.more_icon}
-              tintColor={isMatched(routes.FILTER) ? colors.DARK : colors.WHITE}
+              style={[
+                styles.more_icon,
+                {
+                  tintColor: isMatched(routes.FILTER)
+                    ? colors.DARK
+                    : colors.WHITE,
+                },
+              ]}
             />
           </TouchableOpacity>
         </View>

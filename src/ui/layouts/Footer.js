@@ -37,7 +37,7 @@ const Footer = ({navigation, route}) => {
           source={require('../../assets/images/map.png')}
           style={[
             styles.icon,
-            {tintColor: isMatched(routes.LIST) ? colors.ORANGE : colors.WHITE},
+            {tintColor: isMatched(routes.MAP) ? colors.ORANGE : colors.WHITE},
           ]}
         />
       </TouchableOpacity>
@@ -58,7 +58,7 @@ const Footer = ({navigation, route}) => {
           source={require('../../assets/images/love.png')}
           style={[
             styles.icon,
-            {tintColor: isMatched(routes.LIST) ? colors.ORANGE : colors.WHITE},
+            {tintColor: isMatched(routes.LIKED) ? colors.ORANGE : colors.WHITE},
           ]}
         />
       </TouchableOpacity>
@@ -70,7 +70,11 @@ const Footer = ({navigation, route}) => {
           source={require('../../assets/images/user.png')}
           style={[
             styles.icon,
-            {tintColor: isMatched(routes.LIST) ? colors.ORANGE : colors.WHITE},
+            {
+              tintColor: isMatched(routes.PROFILE)
+                ? colors.ORANGE
+                : colors.WHITE,
+            },
           ]}
         />
       </TouchableOpacity>

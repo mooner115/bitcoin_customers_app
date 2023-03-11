@@ -60,8 +60,7 @@ const Register = ({navigation}) => {
             <View style={styles.logoCircle}>
               <Image
                 source={require('../../../assets/images/user.png')}
-                tintColor={colors.ORANGE}
-                style={styles.logo}
+                style={[styles.logo, {tintColor: colors.ORANGE}]}
               />
             </View>
           </View>

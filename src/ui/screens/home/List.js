@@ -78,8 +78,11 @@ const List = ({navigation}) => {
               </Text>
               <Image
                 source={require('../../../assets/images/sort.png')}
-                style={{height: 30, width: 30}}
-                tintColor={sort ? colors.WHITE : colors.DARK}
+                style={{
+                  height: 30,
+                  width: 30,
+                  tintColor: sort ? colors.WHITE : colors.DARK,
+                }}
               />
             </TouchableOpacity>
           </View>
@@ -111,8 +114,11 @@ const List = ({navigation}) => {
               </Text>
               <Image
                 source={require('../../../assets/images/sort.png')}
-                style={{height: 30, width: 30}}
-                tintColor={!sort ? colors.WHITE : colors.DARK}
+                style={{
+                  height: 30,
+                  width: 30,
+                  tintColor: !sort ? colors.WHITE : colors.DARK,
+                }}
               />
             </TouchableOpacity>
           </View>
