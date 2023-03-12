@@ -18,6 +18,7 @@ import {colors} from '../../../themes/Colors';
 import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
 import {routes} from '../../../navigation/routes';
+import {units} from '../../../themes/Units';
 
 const FIXED_LENGTH = 8;
 
@@ -60,7 +61,7 @@ const ManualRequest = ({navigation}) => {
         <View style={styles.amount_area}>
           <View style={styles.title_area}>
             <TouchableOpacity
-              style={{paddingHorizontal: 10, paddingTop: 20, width: 40}}
+              style={{paddingHorizontal: 10, width: 40}}
               onPress={goBack}>
               <MaterialIcons
                 name="arrow-back-ios"
@@ -72,7 +73,6 @@ const ManualRequest = ({navigation}) => {
               style={{
                 fontFamily: 'Roboto-Bold',
                 color: colors.WHITE,
-                marginTop: 17,
                 fontSize: 22,
               }}>
               Request Bitcoins
@@ -179,10 +179,9 @@ const ManualRequest = ({navigation}) => {
                   justifyContent: 'center',
                   backgroundColor: colors.DARKGREY,
                   paddingVertical: 15,
-                  padding: 10,
+                  paddingHorizontal: 10,
                   marginTop: 15,
                   borderRadius: 7,
-                  marginBottom: 5,
                 }}>
                 <Text
                   style={{
@@ -197,7 +196,7 @@ const ManualRequest = ({navigation}) => {
           </View>
         </View>
 
-        <View style={{marginHorizontal: 20, marginBottom: 50}}>
+        <View>
           <BarcodeCreatorViewManager
             value={'https://www.youtube.com/'}
             background={colors.WHITE}
@@ -208,8 +207,6 @@ const ManualRequest = ({navigation}) => {
 
           <View
             style={{
-              marginHorizontal: 20,
-              marginTop: 30,
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
@@ -261,14 +258,14 @@ const styles = StyleSheet.create({
 
   amount_area: {
     backgroundColor: colors.DARK,
-    paddingVertical: 20,
+    paddingBottom: 20,
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
   },
 
   barcode: {
-    height: 400,
-    width: 400,
+    height: units.width,
+    width: units.width,
     alignSelf: 'center',
   },
 });

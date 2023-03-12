@@ -235,6 +235,8 @@ const Wallet = navigation => {
             </View>
           </View>
         </View>
+
+        <View style={styles.bottom} />
       </ScrollView>
       <Footer navigation={navigation.navigation} route={routes.WALLET} />
     </SafeAreaView>
@@ -405,5 +407,9 @@ const styles = StyleSheet.create({
   text_medium: {
     color: colors.WHITE,
     fontFamily: 'Roboto-Medium',
+  },
+
+  bottom: {
+    marginBottom: 50,
   },
 });

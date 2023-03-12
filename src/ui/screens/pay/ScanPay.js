@@ -12,6 +12,7 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {routes} from '../../../navigation/routes';
 import {colors} from '../../../themes/Colors';
+import {units} from '../../../themes/Units';
 import Footer from '../../layouts/Footer';
 import Header from '../../layouts/Header';
 
@@ -37,59 +38,22 @@ const ScanPay = ({navigation}) => {
       <Header navigation={navigation} route={routes.SCANPAY} />
 
       <ScrollView>
-        <TouchableOpacity
-          style={{paddingHorizontal: 20, paddingTop: 20, width: 100}}
-          onPress={goBack}>
-          <MaterialIcons
-            name="arrow-back-ios"
-            style={{color: colors.BLACK, fontSize: 24, height: 40}}
-          />
+        <TouchableOpacity style={styles.back_area} onPress={goBack}>
+          <MaterialIcons name="arrow-back-ios" style={styles.back_icon} />
         </TouchableOpacity>
 
-        <View style={{width: '100%', borderRadius: 20, marginTop: 30}}>
+        <View>
           <View>
-            <Text
-              style={{
-                color: colors.BLACK,
-                textAlign: 'center',
-                fontFamily: 'Roboto-Bold',
-                fontSize: 17,
-              }}>
-              Scan & Pay
-            </Text>
-            <Text
-              style={{
-                color: colors.BLACK,
-                textAlign: 'center',
-                fontFamily: 'Roboto-Regular',
-                marginTop: 10,
-                fontSize: 13,
-                letterSpacing: 0.3,
-              }}>
-              Hold Camera to QR Code
-            </Text>
+            <Text style={styles.scan_title}>Scan & Pay</Text>
+            <Text style={styles.scan_text}>Hold Camera to QR Code</Text>
           </View>
 
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.justify_center}>
             <QRCodeScanner
               onRead={e => onSuccess(e)}
-              containerStyle={{
-                width: 200,
-                marginTop: 30,
-                marginBottom: 20,
-                borderRadius: 100,
-              }}
-              cameraStyle={[
-                {height: 250, width: 200, borderRadius: 10, overflow: 'hidden'},
-              ]}
+              containerStyle={styles.scan_area}
+              cameraStyle={styles.camera}
             />
-          </View>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginHorizontal: 20,
-            }}>
             <TouchableOpacity
               activeOpacity={0.6}
               style={styles.button}
@@ -97,11 +61,13 @@ const ScanPay = ({navigation}) => {
               <Text style={styles.button_text}>Enter Address Manually</Text>
               <MaterialIcons
                 name="arrow-forward-ios"
-                style={{color: colors.WHITE, fontSize: 15}}
+                style={styles.button_icon}
               />
             </TouchableOpacity>
           </View>
         </View>
+
+        <View style={styles.bottom} />
       </ScrollView>
 
       <Footer navigation={navigation} route={routes.SCANPAY} />
@@ -117,23 +83,75 @@ const styles = StyleSheet.create({
     backgroundColor: colors.WHITE,
   },
 
+  back_area: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
+
+  back_icon: {
+    color: colors.BLACK,
+    fontSize: 24,
+    height: 40,
+  },
+
+  justify_center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  scan_area: {
+    width: units.width / 1.6,
+    height: units.height / 2.5,
+    marginVertical: 30,
+  },
+
+  scan_title: {
+    color: colors.BLACK,
+    textAlign: 'center',
+    fontFamily: 'Roboto-Bold',
+    fontSize: 17,
+  },
+
+  scan_text: {
+    color: colors.BLACK,
+    textAlign: 'center',
+    fontFamily: 'Roboto-Regular',
+    marginTop: 10,
+    fontSize: 13,
+    letterSpacing: 0.3,
+  },
+
+  camera: {
+    width: units.width / 1.6,
+    height: units.height / 2.5,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+
   button: {
-    top: -100,
-    height: 45,
-    width: '65%',
+    height: units.height / 15,
+    width: units.width / 1.6,
     borderRadius: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 12,
     justifyContent: 'space-around',
     backgroundColor: colors.DARK,
   },
 
   button_text: {
-    fontSize: 13,
+    fontSize: 12,
     letterSpacing: 0.8,
     textAlign: 'center',
     color: colors.WHITE,
     fontFamily: 'Roboto-Bold',
+  },
+
+  button_icon: {
+    color: colors.WHITE,
+    fontSize: 15,
+  },
+
+  bottom: {
+    marginBottom: units.height / 10,
   },
 });

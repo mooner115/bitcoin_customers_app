@@ -34,7 +34,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
-  [GMSServices provideAPIKey:@"AIzaSyCWUx9SMa5YE-ydZiyUo7N7Fz5dLZYh0vc"];
+  [GMSServices provideAPIKey:@"AIzaSyDurM_iU0DGeEj8vumsQXzzp2c0dNl39ew"];
 
 #if RCT_NEW_ARCH_ENABLED
   _contextContainer = std::make_shared<facebook::react::ContextContainer const>();

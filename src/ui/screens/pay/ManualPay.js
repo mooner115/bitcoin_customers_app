@@ -56,99 +56,36 @@ const ManualPay = ({navigation}) => {
       <ScrollView>
         <View style={styles.amount_area}>
           <View style={styles.title_area}>
-            <TouchableOpacity
-              style={{paddingHorizontal: 10, paddingTop: 20, width: 40}}
-              onPress={goBack}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                style={{color: colors.WHITE, fontSize: 24, height: 40}}
-              />
+            <TouchableOpacity style={styles.back_area} onPress={goBack}>
+              <MaterialIcons name="arrow-back-ios" style={styles.back_icon} />
             </TouchableOpacity>
 
-            <Text
-              style={{
-                fontFamily: 'Roboto-Bold',
-                color: colors.WHITE,
-                marginTop: 17,
-                fontSize: 22,
-              }}>
-              Send Bitcoins
-            </Text>
+            <Text style={styles.title_text}>Send Bitcoins</Text>
           </View>
 
-          <View style={{paddingHorizontal: 30}}>
-            <Text
-              style={{
-                fontFamily: 'Roboto-Bold',
-                color: colors.WHITE,
-                marginTop: 20,
-                fontSize: 18,
-              }}>
-              Amount
-            </Text>
+          <View style={styles.input_area}>
+            <Text style={styles.amount_text}>Amount</Text>
 
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                marginTop: 20,
-              }}>
+            <View style={styles.amount}>
               <Image
                 source={
                   isUSD
                     ? require('../../../assets/images/usd.png')
                     : require('../../../assets/images/bitcoin.png')
                 }
-                style={{
-                  height: 30,
-                  width: 20,
-                  alignItems: 'center',
-                  top: -13,
-                }}
+                style={styles.amount_icon}
               />
-              <View
-                style={{
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  justifyContent: 'flex-start',
-                }}>
+              <View style={styles.input_box}>
                 <TextInput
-                  style={{
-                    padding: 10,
-                    width: 250,
-                    marginLeft: 10,
-                    height: 40,
-                    borderRadius: 5,
-                    backgroundColor: colors.DARKGREY,
-                    color: colors.WHITE,
-                    fontFamily: 'Roboto-Medium',
-                    letterSpacing: 2,
-                  }}
+                  style={styles.input}
                   value={amount}
                   maxLength={length}
                   onChangeText={handleInput}
                 />
                 {isUSD ? (
-                  <Text
-                    style={{
-                      color: colors.WHITE,
-                      fontFamily: 'Roboto-Bold',
-                      paddingHorizontal: 10,
-                      paddingVertical: 5,
-                    }}>
-                    {calcBTC} BTC
-                  </Text>
+                  <Text style={styles.input_amount}>{calcBTC} BTC</Text>
                 ) : (
-                  <Text
-                    style={{
-                      color: colors.WHITE,
-                      fontFamily: 'Roboto-Bold',
-                      paddingHorizontal: 10,
-                      paddingVertical: 5,
-                    }}>
-                    $ {calcBTC}
-                  </Text>
+                  <Text style={styles.input_amount}>$ {calcBTC}</Text>
                 )}
               </View>
               <TouchableOpacity onPress={handleSwap}>
@@ -160,33 +97,9 @@ const ManualPay = ({navigation}) => {
             </View>
 
             <View style={{marginTop: 30}}>
-              <Text
-                style={{
-                  fontFamily: 'Roboto-Regular',
-                  fontSize: 14,
-                  color: colors.WHITE,
-                }}>
-                Request From Address
-              </Text>
-              <TouchableOpacity
-                activeOpacity={0.6}
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: colors.DARKGREY,
-                  paddingVertical: 15,
-                  padding: 10,
-                  marginTop: 15,
-                  borderRadius: 7,
-                  marginBottom: 5,
-                }}>
-                <Text
-                  style={{
-                    color: colors.WHITE,
-                    fontSize: 13,
-                    letterSpacing: 0.4,
-                  }}>
+              <Text style={styles.address_title}>Request From Address</Text>
+              <TouchableOpacity activeOpacity={0.6} style={styles.address_area}>
+                <Text style={styles.address}>
                   0x60aE616a2155Ee3d9A68541Ba454486231
                 </Text>
               </TouchableOpacity>
@@ -195,45 +108,15 @@ const ManualPay = ({navigation}) => {
         </View>
 
         <View style={{marginHorizontal: 20, marginTop: 30}}>
-          <Text
-            style={{
-              fontFamily: 'Roboto-Regular',
-              fontSize: 13,
-              color: colors.BLACK,
-            }}>
-            Send to Address
-          </Text>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: colors.DARKWHITE,
-              paddingVertical: 15,
-              padding: 10,
-              marginTop: 15,
-              borderRadius: 7,
-              marginBottom: 5,
-            }}>
+          <Text style={styles.send_title}>Send to Address</Text>
+          <TouchableOpacity activeOpacity={0.6} style={styles.send_area}>
             <TextInput
-              style={{
-                color: colors.BLACK,
-                fontSize: 13,
-                letterSpacing: 0.4,
-              }}
+              style={styles.send_address}
               defaultValue={'0x60aE616a2155Ee3d9A68541Ba454486231'}
             />
           </TouchableOpacity>
 
-          <View
-            style={{
-              marginHorizontal: 20,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginTop: 70,
-            }}>
+          <View style={styles.button}>
             <TouchableOpacity
               activeOpacity={0.6}
               style={{
@@ -281,8 +164,130 @@ const styles = StyleSheet.create({
 
   amount_area: {
     backgroundColor: colors.DARK,
-    paddingVertical: 20,
+    paddingBottom: 20,
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
+  },
+
+  back_area: {
+    paddingHorizontal: 10,
+    width: 40,
+  },
+
+  back_icon: {
+    color: colors.WHITE,
+    fontSize: 24,
+    height: 40,
+  },
+
+  title_text: {
+    fontFamily: 'Roboto-Bold',
+    color: colors.WHITE,
+    fontSize: 22,
+  },
+
+  input_area: {
+    paddingHorizontal: 30,
+  },
+
+  amount_text: {
+    fontFamily: 'Roboto-Bold',
+    color: colors.WHITE,
+    marginTop: 20,
+    fontSize: 18,
+  },
+
+  amount: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginTop: 20,
+  },
+
+  amount_icon: {
+    height: 30,
+    width: 20,
+    alignItems: 'center',
+    top: -13,
+  },
+
+  input_box: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+
+  input: {
+    padding: 10,
+    width: 250,
+    marginLeft: 10,
+    height: 40,
+    borderRadius: 5,
+    backgroundColor: colors.DARKGREY,
+    color: colors.WHITE,
+    fontFamily: 'Roboto-Medium',
+    letterSpacing: 2,
+  },
+
+  input_amount: {
+    color: colors.WHITE,
+    fontFamily: 'Roboto-Bold',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+
+  address_title: {
+    fontFamily: 'Roboto-Regular',
+    fontSize: 14,
+    color: colors.WHITE,
+  },
+
+  address_area: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.DARKGREY,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    marginTop: 15,
+    borderRadius: 7,
+  },
+
+  address: {
+    color: colors.WHITE,
+    fontSize: 13,
+    letterSpacing: 0.4,
+  },
+
+  send_title: {
+    fontFamily: 'Roboto-Regular',
+    fontSize: 13,
+    color: colors.BLACK,
+  },
+
+  send_area: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.DARKWHITE,
+    paddingVertical: 15,
+    padding: 10,
+    marginTop: 15,
+    borderRadius: 7,
+    marginBottom: 5,
+  },
+
+  send_address: {
+    color: colors.BLACK,
+    fontSize: 13,
+    letterSpacing: 0.4,
+  },
+
+  button: {
+    marginHorizontal: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 70,
   },
 });

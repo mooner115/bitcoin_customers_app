@@ -9,6 +9,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {colors} from '../../themes/Colors';
+import {units} from '../../themes/Units';
 import {routes} from '../../navigation/routes';
 
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -116,13 +117,7 @@ const Header = ({navigation, route}) => {
                 value={inputValue}
                 onChangeText={handleInputChange}
                 placeholderTextColor={colors.GREY}
-                style={{
-                  width: '80%',
-                  color: colors.BLACK,
-                  fontFamily: 'Roboto-Medium',
-                  paddingVertical: 4,
-                  height: 80,
-                }}
+                style={styles.input}
               />
               {inputValue.length == '' ? (
                 <MaterialIcons name="search" style={styles.input_icon} />
@@ -226,11 +221,11 @@ export default Header;
 
 const styles = StyleSheet.create({
   container_round: {
-    height: 70,
-    paddingVertical: 20,
+    height: units.height / 11.7,
+    paddingVertical: units.height / 41,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 30,
+    paddingHorizontal: units.width / 13.3,
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
     backgroundColor: colors.DARK,
@@ -239,22 +234,22 @@ const styles = StyleSheet.create({
   },
 
   container_white: {
-    height: 70,
-    paddingVertical: 20,
+    height: units.height / 11.7,
+    paddingVertical: units.height / 41,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 30,
+    paddingHorizontal: units.width / 13.3,
     backgroundColor: colors.WHITE,
     justifyContent: 'space-between',
     zIndex: -1,
   },
 
   container: {
-    height: 70,
-    paddingVertical: 20,
+    height: units.height / 11.7,
+    paddingVertical: units.height / 41,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 30,
+    paddingHorizontal: units.width / 13.3,
     backgroundColor: colors.DARK,
     justifyContent: 'space-between',
     zIndex: -1,
@@ -268,7 +263,7 @@ const styles = StyleSheet.create({
 
   input_area: {
     zIndex: 2,
-    height: 40,
+    height: units.height / 20.5,
     width: '65%',
     borderRadius: 5,
     color: colors.GREY,
@@ -278,8 +273,16 @@ const styles = StyleSheet.create({
     backgroundColor: colors.WHITE,
   },
 
+  input: {
+    width: units.width / 1.2,
+    color: colors.BLACK,
+    fontFamily: 'Roboto-Medium',
+    paddingVertical: 4,
+    height: units.height / 10.2,
+  },
+
   icon_area: {
-    width: 70,
+    width: units.width / 5.7,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -289,55 +292,55 @@ const styles = StyleSheet.create({
     color: colors.BLACK,
     left: -6,
     fontSize: 25,
-    width: 30,
+    width: units.width / 13.3,
   },
 
   close_icon: {
     color: colors.BLACK,
     left: -6,
     fontSize: 15,
-    width: 20,
+    width: units.width / 20,
   },
 
   more_icon: {
-    width: 27,
-    height: 27,
+    width: units.width / 14.8,
+    height: units.width / 14.8,
   },
 
   filter_icon: {
-    width: 27,
-    height: 27,
+    width: units.width / 14.8,
+    height: units.width / 14.8,
   },
 
   back_icon: {
-    width: 25,
-    height: 25,
+    width: units.width / 16,
+    height: units.width / 16,
   },
 
   alarm_icon: {
-    width: 27,
-    height: 27,
+    width: units.width / 14.8,
+    height: units.width / 14.8,
   },
 
   header_path: {
     width: '90%',
     fontFamily: 'Roboto-Medium',
-    fontSize: 22,
+    fontSize: units.width / 20,
     fontWeight: 'bold',
     letterSpacing: 0.4,
     color: colors.WHITE,
-    paddingHorizontal: 10,
+    paddingHorizontal: units.width / 40,
     alignItems: 'center',
   },
 
   header_path_dark: {
     width: '90%',
     fontFamily: 'Roboto-Medium',
-    fontSize: 22,
+    fontSize: units.width / 20,
     fontWeight: 'bold',
     letterSpacing: 0.4,
     color: colors.DARK,
-    paddingHorizontal: 10,
+    paddingHorizontal: units.width / 40,
     alignItems: 'center',
   },
 });

@@ -159,6 +159,8 @@ const ConfirmPay = ({navigation}) => {
             </Text>
           </TouchableOpacity>
         </View>
+
+        <View style={styles.bottom} />
       </ScrollView>
 
       <Footer navigation={navigation} route={routes.CONFIRMPAY} />
@@ -179,5 +181,9 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
+  },
+
+  bottom: {
+    marginBottom: 50,
   },
 });
