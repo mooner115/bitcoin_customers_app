@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
   input_area: {
     zIndex: 2,
     height: units.height / 20.5,
-    width: units.width / 1.5,
+    width: units.width / 1.55,
     borderRadius: 5,
     color: colors.GREY,
     flexDirection: 'row',
