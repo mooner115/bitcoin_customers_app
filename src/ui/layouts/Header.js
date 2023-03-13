@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
   input_area: {
     zIndex: 2,
     height: units.height / 20.5,
-    width: '65%',
+    width: units.width / 1.5,
     borderRadius: 5,
     color: colors.GREY,
     flexDirection: 'row',
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: units.width / 1.2,
+    width: units.width / 2,
     color: colors.BLACK,
     fontFamily: 'Roboto-Medium',
     paddingVertical: 4,
