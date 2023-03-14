@@ -7,6 +7,7 @@ import {
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -411,7 +412,7 @@ const styles = StyleSheet.create({
   },
 
   scroll_area: {
-    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
+    height: Platform.OS === 'ios' ? units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height - 1 / 14.8) : units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
   },
 
   detail_area: {

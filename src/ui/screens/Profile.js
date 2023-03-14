@@ -9,6 +9,7 @@ import {
   Modal,
   Animated,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -270,7 +271,7 @@ const styles = StyleSheet.create({
   },
 
   scroll_area: {
-    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
+    height: Platform.OS === 'ios' ? units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height - 1 / 14.8) : units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
   },
 
   avatar_area: {

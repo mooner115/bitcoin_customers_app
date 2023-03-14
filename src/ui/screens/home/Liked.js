@@ -6,6 +6,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import {colors} from '../../../themes/Colors';
@@ -140,6 +141,6 @@ const styles = StyleSheet.create({
   },
 
   scroll_area: {
-    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
+    height: Platform.OS === 'ios' ? units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height - 1 / 14.8) : units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
   },
 });
