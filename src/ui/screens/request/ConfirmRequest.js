@@ -12,6 +12,7 @@ import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
 import {routes} from '../../../navigation/routes';
 import {colors} from '../../../themes/Colors';
+import {units} from '../../../themes/Units';
 
 const ConfirmRequest = ({navigation}) => {
   const navigate = route => {
@@ -82,7 +83,8 @@ const ConfirmRequest = ({navigation}) => {
           </View>
           <View
             style={{
-              marginTop: 20,
+              marginTop: units.height / 41,
+              paddingHorizontal: units.width / 20,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -184,6 +186,6 @@ const styles = StyleSheet.create({
   },
 
   bottom: {
-    marginBottom: 50,
+    marginBottom: units.height / 10,
   },
 });

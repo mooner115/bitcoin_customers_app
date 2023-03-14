@@ -15,8 +15,10 @@ import {colors} from '../../../themes/Colors';
 import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
 import {routes} from '../../../navigation/routes';
+import {units} from '../../../themes/Units';
 
-const FIXED_LENGTH = 8;
+const FIXED_BITCOIN_LENGTH = 8;
+const FIXED_USD_LENGTH = 2;
 
 const ManualPay = ({navigation}) => {
   const [amount, setAmount] = useState('0');
@@ -35,7 +37,13 @@ const ManualPay = ({navigation}) => {
   const handleInput = value => {
     const len = value.indexOf('.') !== -1 ? value.split('.')[1].length : 0;
     const amount = value;
-    setLength(!len ? 100 : value.split('.')[0].length + 9);
+    setLength(
+      !len
+        ? 100
+        : value.split('.')[0].length +
+            (isUSD ? FIXED_USD_LENGTH : FIXED_BITCOIN_LENGTH) +
+            1,
+    );
     setAmount(amount);
     setCalcBTC(getBTCFromUSD(amount, isUSD));
   };
@@ -43,7 +51,13 @@ const ManualPay = ({navigation}) => {
   const handleSwap = () => {
     const len = calcBTC.indexOf('.') !== -1 ? calcBTC.split('.')[1].length : 0;
     const amount = calcBTC;
-    setLength(!len ? 100 : amount.split('.')[0].length + 9);
+    setLength(
+      !len
+        ? 100
+        : amount.split('.')[0].length +
+            (isUSD ? FIXED_BITCOIN_LENGTH : FIXED_USD_LENGTH) +
+            1,
+    );
     setCalcBTC(getBTCFromUSD(calcBTC.toString(), !isUSD));
     setUSD(!isUSD);
     setAmount(calcBTC.toString());
@@ -96,24 +110,26 @@ const ManualPay = ({navigation}) => {
               </TouchableOpacity>
             </View>
 
-            <View style={{marginTop: 30}}>
+            <View style={{marginTop: units.height / 27.3}}>
               <Text style={styles.address_title}>Request From Address</Text>
               <TouchableOpacity activeOpacity={0.6} style={styles.address_area}>
-                <Text style={styles.address}>
-                  0x60aE616a2155Ee3d9A68541Ba454486231
-                </Text>
+                <TextInput
+                  style={styles.address}
+                  defaultValue={'0x60aE616a2155Ee3d9A68541Ba454486231'}
+                />
               </TouchableOpacity>
             </View>
           </View>
         </View>
 
-        <View style={{marginHorizontal: 20, marginTop: 30}}>
+        <View
+          style={{
+            marginHorizontal: units.width / 20,
+            marginTop: units.height / 27.3,
+          }}>
           <Text style={styles.send_title}>Send to Address</Text>
           <TouchableOpacity activeOpacity={0.6} style={styles.send_area}>
-            <TextInput
-              style={styles.send_address}
-              defaultValue={'0x60aE616a2155Ee3d9A68541Ba454486231'}
-            />
+            <TextInput style={styles.send_address} />
           </TouchableOpacity>
 
           <View style={styles.button}>
@@ -138,6 +154,8 @@ const ManualPay = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
+
+        <View style={styles.bottom} />
       </ScrollView>
 
       <Footer navigation={navigation} route={routes.MANUALPAY} />
@@ -147,7 +165,9 @@ const ManualPay = ({navigation}) => {
 
 function getBTCFromUSD(usd, isUSD) {
   const val = isUSD ? Number(usd) / 21819.3 : Number(usd) * 21819.3;
-  return Number(val.toFixed(FIXED_LENGTH)).toString();
+  return Number(
+    val.toFixed(isUSD ? FIXED_BITCOIN_LENGTH : FIXED_USD_LENGTH),
+  ).toString();
 }
 
 export default ManualPay;
@@ -219,7 +239,7 @@ const styles = StyleSheet.create({
 
   input: {
     padding: 10,
-    width: 250,
+    width: units.width / 1.8,
     marginLeft: 10,
     height: 40,
     borderRadius: 5,
@@ -247,9 +267,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.DARKGREY,
-    paddingVertical: 15,
     paddingHorizontal: 10,
-    marginTop: 15,
+    marginTop: units.height / 40,
     borderRadius: 7,
   },
 
@@ -257,6 +276,7 @@ const styles = StyleSheet.create({
     color: colors.WHITE,
     fontSize: 13,
     letterSpacing: 0.4,
+    width: '100%',
   },
 
   send_title: {
@@ -270,17 +290,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.DARKWHITE,
-    paddingVertical: 15,
-    padding: 10,
-    marginTop: 15,
+    paddingHorizontal: units.width / 40,
+    marginTop: units.height / 40,
     borderRadius: 7,
-    marginBottom: 5,
   },
 
   send_address: {
     color: colors.BLACK,
     fontSize: 13,
     letterSpacing: 0.4,
+    width: '100%',
   },
 
   button: {
@@ -289,5 +308,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 70,
+  },
+
+  bottom: {
+    marginBottom: units.height / 10,
   },
 });

@@ -221,8 +221,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   container_round: {
-    height: units.height / 11.7,
-    paddingVertical: units.height / 41,
+    height: units.height / 12,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: units.width / 13.3,
@@ -234,8 +233,7 @@ const styles = StyleSheet.create({
   },
 
   container_white: {
-    height: units.height / 11.7,
-    paddingVertical: units.height / 41,
+    height: units.height / 12,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: units.width / 13.3,
@@ -245,8 +243,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    height: units.height / 11.7,
-    paddingVertical: units.height / 41,
+    height: units.height / 12,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: units.width / 13.3,
@@ -264,7 +261,7 @@ const styles = StyleSheet.create({
   input_area: {
     zIndex: 2,
     height: units.height / 20.5,
-    width: units.width / 1.6,
+    width: units.width / 1.8,
     borderRadius: 5,
     color: colors.GREY,
     flexDirection: 'row',

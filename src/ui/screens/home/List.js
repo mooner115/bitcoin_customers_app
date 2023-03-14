@@ -31,11 +31,11 @@ const List = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.LIST} />
 
-      <ScrollView>
+      <ScrollView style={styles.scroll_area}>
         <View
           style={{
-            marginHorizontal: 15,
-            marginVertical: 20,
+            marginHorizontal: units.width / 25,
+            marginVertical: units.height / 40,
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -46,7 +46,7 @@ const List = ({navigation}) => {
               fontFamily: 'Roboto-Bold',
               letterSpacing: 0.3,
               fontSize: 24,
-              width: 120,
+              width: units.width / 4,
             }}>
             List
           </Text>
@@ -62,7 +62,7 @@ const List = ({navigation}) => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 paddingHorizontal: 12,
-                width: 100,
+                width: units.width / 4 < 100 ? 100 : units.width / 4,
                 borderRadius: 5,
                 paddingVertical: sort ? 4 : 2,
               }}
@@ -98,7 +98,7 @@ const List = ({navigation}) => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 paddingHorizontal: 12,
-                width: 100,
+                width: units.width / 4 < 100 ? 100 : units.width / 4,
                 borderRadius: 5,
                 paddingVertical: !sort ? 4 : 2,
               }}
@@ -136,7 +136,10 @@ export default List;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.WHITE,
+  },
+
+  scroll_area: {
+    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
   },
 });

@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: 'Roboto-Medium',
     paddingLeft: '5%',
+    color: colors.BLACK,
   },
   icon: {
     marginRight: units.width / 16,

@@ -97,16 +97,16 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    height: 30,
-    width: 30,
+    height: units.width / 12,
+    width: units.width / 12,
   },
 
   bitcoin: {
-    height: 70,
-    width: 70,
+    height: units.height / 12.06,
+    width: units.height / 12.06,
     borderRadius: 50,
     borderWidth: 4,
     borderColor: colors.WHITE,
-    top: -35,
+    top: (-1 * units.height) / 25.12,
   },
 });

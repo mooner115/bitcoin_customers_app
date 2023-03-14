@@ -20,7 +20,8 @@ import Footer from '../../layouts/Footer';
 import {routes} from '../../../navigation/routes';
 import {units} from '../../../themes/Units';
 
-const FIXED_LENGTH = 8;
+const FIXED_BITCOIN_LENGTH = 8;
+const FIXED_USD_LENGTH = 2;
 
 const ManualRequest = ({navigation}) => {
   const [amount, setAmount] = useState('0');
@@ -39,7 +40,13 @@ const ManualRequest = ({navigation}) => {
   const handleInput = value => {
     const len = value.indexOf('.') !== -1 ? value.split('.')[1].length : 0;
     const amount = value;
-    setLength(!len ? 100 : value.split('.')[0].length + 9);
+    setLength(
+      !len
+        ? 100
+        : value.split('.')[0].length +
+            (isUSD ? FIXED_USD_LENGTH : FIXED_BITCOIN_LENGTH) +
+            1,
+    );
     setAmount(amount);
     setCalcBTC(getBTCFromUSD(amount, isUSD));
   };
@@ -47,7 +54,13 @@ const ManualRequest = ({navigation}) => {
   const handleSwap = () => {
     const len = calcBTC.indexOf('.') !== -1 ? calcBTC.split('.')[1].length : 0;
     const amount = calcBTC;
-    setLength(!len ? 100 : amount.split('.')[0].length + 9);
+    setLength(
+      !len
+        ? 100
+        : amount.split('.')[0].length +
+            (isUSD ? FIXED_BITCOIN_LENGTH : FIXED_USD_LENGTH) +
+            1,
+    );
     setCalcBTC(getBTCFromUSD(calcBTC.toString(), !isUSD));
     setUSD(!isUSD);
     setAmount(calcBTC.toString());
@@ -60,23 +73,11 @@ const ManualRequest = ({navigation}) => {
       <ScrollView>
         <View style={styles.amount_area}>
           <View style={styles.title_area}>
-            <TouchableOpacity
-              style={{paddingHorizontal: 10, width: 40}}
-              onPress={goBack}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                style={{color: colors.WHITE, fontSize: 24, height: 40}}
-              />
+            <TouchableOpacity style={styles.back_area} onPress={goBack}>
+              <MaterialIcons name="arrow-back-ios" style={styles.back_icon} />
             </TouchableOpacity>
 
-            <Text
-              style={{
-                fontFamily: 'Roboto-Bold',
-                color: colors.WHITE,
-                fontSize: 22,
-              }}>
-              Request Bitcoins
-            </Text>
+            <Text style={styles.title_text}>Request Bitcoins</Text>
           </View>
 
           <View style={{paddingHorizontal: 30}}>
@@ -119,7 +120,7 @@ const ManualRequest = ({navigation}) => {
                 <TextInput
                   style={{
                     padding: 10,
-                    width: 250,
+                    width: units.width / 1.8,
                     marginLeft: 10,
                     height: 40,
                     borderRadius: 5,
@@ -178,19 +179,18 @@ const ManualRequest = ({navigation}) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   backgroundColor: colors.DARKGREY,
-                  paddingVertical: 15,
                   paddingHorizontal: 10,
                   marginTop: 15,
                   borderRadius: 7,
                 }}>
-                <Text
+                <TextInput
                   style={{
                     color: colors.WHITE,
                     fontSize: 13,
                     letterSpacing: 0.4,
-                  }}>
-                  0x60aE616a2155Ee3d9A68541Ba454486231
-                </Text>
+                    width: '100%',
+                  }}
+                />
               </TouchableOpacity>
             </View>
           </View>
@@ -216,7 +216,7 @@ const ManualRequest = ({navigation}) => {
               style={{
                 backgroundColor: colors.DARK,
                 borderRadius: 10,
-                width: 150,
+                width: units.width / 2.5,
                 paddingVertical: 14,
               }}
               onPress={() => navigate(routes.CONFIRMREQUEST)}>
@@ -232,6 +232,8 @@ const ManualRequest = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
+
+        <View style={styles.bottom} />
       </ScrollView>
 
       <Footer navigation={navigation} route={routes.MANUALREQUEST} />
@@ -241,7 +243,9 @@ const ManualRequest = ({navigation}) => {
 
 function getBTCFromUSD(usd, isUSD) {
   const val = isUSD ? Number(usd) / 21819.3 : Number(usd) * 21819.3;
-  return Number(val.toFixed(FIXED_LENGTH)).toString();
+  return Number(
+    val.toFixed(isUSD ? FIXED_BITCOIN_LENGTH : FIXED_USD_LENGTH),
+  ).toString();
 }
 
 export default ManualRequest;
@@ -252,8 +256,25 @@ const styles = StyleSheet.create({
     backgroundColor: colors.WHITE,
   },
 
+  back_area: {
+    paddingHorizontal: 10,
+    width: 40,
+  },
+
+  back_icon: {
+    color: colors.WHITE,
+    fontSize: 24,
+    height: 40,
+  },
+
   title_area: {
     flexDirection: 'row',
+  },
+
+  title_text: {
+    fontFamily: 'Roboto-Bold',
+    color: colors.WHITE,
+    fontSize: 22,
   },
 
   amount_area: {
@@ -267,5 +288,9 @@ const styles = StyleSheet.create({
     height: units.width,
     width: units.width,
     alignSelf: 'center',
+  },
+
+  bottom: {
+    marginBottom: units.height / 10,
   },
 });

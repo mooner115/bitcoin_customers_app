@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    height: units.height / 15,
+    height: units.height / 13,
     width: units.width / 1.6,
     borderRadius: 8,
     flexDirection: 'row',

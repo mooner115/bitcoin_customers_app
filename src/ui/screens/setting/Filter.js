@@ -11,14 +11,15 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {routes} from '../../../navigation/routes';
 import {colors} from '../../../themes/Colors';
 import Header from '../../layouts/Header';
+import {units} from '../../../themes/Units';
 
 const Filter = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.FILTER} />
 
-      <View style={{marginHorizontal: 20}}>
-        <View style={{marginTop: 20}}>
+      <View style={{marginHorizontal: units.width / 20}}>
+        <View style={{marginTop: units.height / 40}}>
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
@@ -60,7 +61,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARKWHITE,
               borderRadius: 10,
-              width: 120,
+              width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
@@ -80,7 +81,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARKWHITE,
               borderRadius: 10,
-              width: 120,
+              width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
@@ -100,7 +101,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARK,
               borderRadius: 10,
-              width: 120,
+              width: units.width / 3.5,
               paddingVertical: 12,
             }}>
             <Text
@@ -133,7 +134,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARKWHITE,
               borderRadius: 10,
-              width: 120,
+              width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
@@ -153,7 +154,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARKWHITE,
               borderRadius: 10,
-              width: 120,
+              width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
@@ -173,7 +174,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARK,
               borderRadius: 10,
-              width: 120,
+              width: units.width / 3.5,
               paddingVertical: 12,
             }}>
             <Text
@@ -200,7 +201,7 @@ const Filter = ({navigation}) => {
               color: colors.BLACK,
               fontFamily: 'Roboto-Medium',
               fontSize: 20,
-              width: 110,
+              width: units.width / 4,
             }}>
             Distance
           </Text>
@@ -209,7 +210,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARKWHITE,
               borderRadius: 5,
-              width: 70,
+              width: units.width / 6,
               borderColor: colors.GREY,
               borderWidth: 1,
               paddingVertical: 5,
@@ -229,8 +230,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARK,
               borderRadius: 5,
-              left: -15,
-              width: 70,
+              width: units.width / 6,
               borderColor: colors.BLACK,
               borderWidth: 1,
               paddingVertical: 5,
@@ -250,7 +250,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARKWHITE,
               borderRadius: 5,
-              width: 70,
+              width: units.width / 4,
               borderColor: colors.GREY,
               borderWidth: 1,
               paddingVertical: 5,
@@ -278,7 +278,6 @@ const Filter = ({navigation}) => {
 
         <View
           style={{
-            marginHorizontal: 20,
             marginTop: 30,
             flexDirection: 'row',
             alignItems: 'center',
@@ -289,7 +288,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARKWHITE,
               borderRadius: 10,
-              width: 150,
+              width: units.width / 2.3,
               borderColor: colors.GREY,
               borderWidth: 1,
               paddingVertical: 12,
@@ -309,7 +308,7 @@ const Filter = ({navigation}) => {
             style={{
               backgroundColor: colors.DARK,
               borderRadius: 10,
-              width: 150,
+              width: units.width / 2.3,
               paddingVertical: 12,
             }}>
             <Text

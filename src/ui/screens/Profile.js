@@ -168,7 +168,7 @@ const Profile = navigation => {
                     placeHolder="Email"
                     value={values.email}
                     onChangeText={handleChange('email')}
-                    width={150}
+                    width={units.width / 2.5}
                     height={40}
                     fontSize={12}
                   />
@@ -180,7 +180,7 @@ const Profile = navigation => {
                     placeHolder="Phone"
                     value={values.phone}
                     onChangeText={handleChange('phone')}
-                    width={150}
+                    width={units.width / 2.5}
                     height={40}
                     fontSize={12}
                   />
@@ -192,7 +192,7 @@ const Profile = navigation => {
                     placeHolder="Password"
                     value={values.password}
                     onChangeText={handleChange('password')}
-                    width={150}
+                    width={units.width / 2.5}
                     height={40}
                     fontSize={12}
                   />
@@ -204,7 +204,7 @@ const Profile = navigation => {
                     placeHolder="Confirm Password"
                     value={values.confirm}
                     onChangeText={handleChange('confirm')}
-                    width={150}
+                    width={units.width / 2.5}
                     height={40}
                     fontSize={12}
                   />
@@ -217,7 +217,7 @@ const Profile = navigation => {
                     onPress={handleSubmit}
                     backColor={colors.DARK}
                     fontColor={colors.WHITE}
-                    width={150}
+                    width={units.width / 2.5}
                     paddingVertical={10}
                   />
                 </View>
@@ -266,12 +266,11 @@ export default Profile;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.WHITE,
   },
 
   scroll_area: {
-    height: units.height / 1.2,
+    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
   },
 
   avatar_area: {
@@ -327,14 +326,13 @@ const styles = StyleSheet.create({
 
   badge: {
     backgroundColor: colors.GREEN,
-    width: 80,
-    paddingHorizontal: 8,
+    paddingHorizontal: 5,
     paddingVertical: 2,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     borderRadius: 5,
-    left: -40,
+    left: (-1 * units.width) / 15,
   },
 
   modal_box: {

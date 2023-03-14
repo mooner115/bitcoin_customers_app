@@ -6,8 +6,10 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  Platform,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {colors} from '../../../themes/Colors';
 import {units} from '../../../themes/Units';
@@ -47,12 +49,19 @@ const Register = ({navigation}) => {
     navigation.navigate(routes.LOGIN);
   };
 
+  const goBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {loading && <Loading />}
       <KeyboardAwareScrollView>
         <View style={styles.bodyContainer}>
           <View style={styles.titleContainer}>
+            <TouchableOpacity style={styles.back_area} onPress={goBack}>
+              <MaterialIcons name="arrow-back-ios" style={styles.back_icon} />
+            </TouchableOpacity>
             <Text style={styles.register_text}>Sign Up</Text>
           </View>
 
@@ -72,14 +81,14 @@ const Register = ({navigation}) => {
               validationSchema={registerValidationSchema}>
               {({values, errors, touched, handleChange, handleSubmit}) => (
                 <>
-                  <View style={{marginTop: units.height / 20.52}}>
+                  <View style={{marginTop: units.height / 50}}>
                     <Text style={styles.description}>Name</Text>
                     <CustomInput
                       placeHolder="Full Name"
                       value={values.fullName}
                       onChangeText={handleChange('fullName')}
                       width={'100%'}
-                      height={60}
+                      height={50}
                       fontSize={16}
                     />
                     {errors.fullName && touched.fullName && (
@@ -87,7 +96,7 @@ const Register = ({navigation}) => {
                     )}
                   </View>
 
-                  <View style={{marginTop: units.height / 20.52}}>
+                  <View style={{marginTop: units.height / 50}}>
                     <Text style={styles.description}>Email</Text>
                     <CustomInput
                       placeHolder="Email"
@@ -95,7 +104,7 @@ const Register = ({navigation}) => {
                       value={values.email}
                       onChangeText={handleChange('email')}
                       width={'100%'}
-                      height={60}
+                      height={50}
                       fontSize={16}
                     />
                     {errors.email && touched.email && (
@@ -103,14 +112,14 @@ const Register = ({navigation}) => {
                     )}
                   </View>
 
-                  <View style={{marginTop: units.height / 20.52}}>
+                  <View style={{marginTop: units.height / 50}}>
                     <Text style={styles.description}>Phone</Text>
                     <CustomInput
                       placeHolder="Phone number"
                       value={values.phoneNumber}
                       onChangeText={handleChange('phoneNumber')}
                       width={'100%'}
-                      height={60}
+                      height={50}
                       fontSize={16}
                       type="phone-pad"
                     />
@@ -119,14 +128,14 @@ const Register = ({navigation}) => {
                     )}
                   </View>
 
-                  <View style={{marginTop: units.height / 20.52}}>
+                  <View style={{marginTop: units.height / 50}}>
                     <Text style={styles.description}>Address</Text>
                     <CustomInput
                       placeHolder="Address"
                       value={values.address}
                       onChangeText={handleChange('address')}
                       width={'100%'}
-                      height={60}
+                      height={50}
                       fontSize={16}
                     />
                     {errors.address && touched.address && (
@@ -143,7 +152,6 @@ const Register = ({navigation}) => {
                         value={toggleCheckBox}
                         onValueChange={newValue => setToggleCheckBox(newValue)}
                       />
-
                       <Text style={styles.agree}>I agree with </Text>
                     </View>
                     <TouchableOpacity activeOpacity={0.6}>
@@ -159,7 +167,7 @@ const Register = ({navigation}) => {
                       onPress={handleSubmit}
                       backColor={colors.DARK}
                       fontColor={colors.WHITE}
-                      paddingVertical={20}
+                      paddingVertical={15}
                     />
                   </View>
                 </>
@@ -192,14 +200,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.DARK,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
-    alignItems: 'center',
-    paddingVertical: 15,
+    paddingVertical: 10,
   },
 
   register_text: {
+    textAlign: 'center',
     fontSize: 24,
     letterSpacing: 0.8,
-    textAlign: 'center',
     color: colors.WHITE,
     fontFamily: 'Roboto-Bold',
   },
@@ -209,7 +216,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: units.height / 40,
   },
 
   logoCircle: {
@@ -226,7 +233,7 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    marginVertical: units.height / 20.52,
+    marginVertical: units.height / 50,
   },
 
   loginContainer: {
@@ -264,16 +271,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    marginTop: 20,
+    marginTop: 10,
   },
 
   agree: {
+    marginLeft: Platform.OS === 'ios' ? 5 : 0,
+    fontSize: 11,
     color: colors.BLACK,
     fontFamily: 'Roboto-Regular',
   },
 
   terms_privacy: {
-    fontSize: 12,
+    fontSize: 11,
     color: colors.BLACK,
     fontFamily: 'Roboto-Bold',
   },
@@ -282,5 +291,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  back_area: {
+    paddingHorizontal: 10,
+    width: 40,
+  },
+
+  back_icon: {
+    color: colors.WHITE,
+    fontSize: 24,
   },
 });

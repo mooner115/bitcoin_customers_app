@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React from 'react';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CustomInput from '../../components/CustomInput';
 import {colors} from '../../../themes/Colors';
 import {units} from '../../../themes/Units';
@@ -38,12 +39,19 @@ const Login = ({navigation}) => {
     navigation.navigate(routes.REGISTER);
   };
 
+  const goBack = () => {
+    navigation.navigate(routes.MAP);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {loading && <Loading />}
       <KeyboardAwareScrollView>
         <View style={styles.bodyContainer}>
           <View style={styles.logoContainer}>
+            <TouchableOpacity style={styles.back_area} onPress={goBack}>
+              <MaterialIcons name="arrow-back-ios" style={styles.back_icon} />
+            </TouchableOpacity>
             <Text style={styles.login_text}>Login</Text>
             <Image
               source={require('../../../assets/images/avatar.png')}
@@ -55,8 +63,12 @@ const Login = ({navigation}) => {
             onSubmit={handeleLogin}
             validationSchema={loginValidationSchema}>
             {({values, errors, touched, handleChange, handleSubmit}) => (
-              <View style={{paddingHorizontal: 30, paddingVertical: 50}}>
-                <View style={{marginTop: units.height / 15}}>
+              <View
+                style={{
+                  paddingHorizontal: units.width / 13,
+                  paddingVertical: units.height / 20,
+                }}>
+                <View style={{marginTop: units.height / 20}}>
                   <Text style={styles.description}>Email Or Login</Text>
                   <CustomInput
                     placeHolder="Email"
@@ -64,21 +76,21 @@ const Login = ({navigation}) => {
                     value={values.email}
                     onChangeText={handleChange('email')}
                     width={'100%'}
-                    height={60}
+                    height={50}
                     fontSize={16}
                   />
                   {errors.email && touched.email && (
                     <Text style={styles.errorText}>{errors.email}</Text>
                   )}
                 </View>
-                <View style={{marginTop: units.height / 30}}>
+                <View style={{marginTop: units.height / 50}}>
                   <Text style={styles.description}>Password</Text>
                   <CustomInput
                     placeHolder="Password"
                     value={values.password}
                     onChangeText={handleChange('password')}
                     width={'100%'}
-                    height={60}
+                    height={50}
                     fontSize={16}
                     secure
                   />
@@ -86,7 +98,7 @@ const Login = ({navigation}) => {
                     <Text style={styles.errorText}>{errors.password}</Text>
                   )}
                 </View>
-                <View style={{marginTop: units.height / 30}}>
+                <View style={{marginTop: units.height / 50}}>
                   <TouchableOpacity>
                     <Text style={styles.forgotText}>Forgot Your Password?</Text>
                   </TouchableOpacity>
@@ -97,7 +109,7 @@ const Login = ({navigation}) => {
                       backColor={colors.DARK}
                       fontColor={colors.WHITE}
                       width={'100%'}
-                      paddingVertical={20}
+                      paddingVertical={15}
                     />
                   </View>
                 </View>
@@ -144,7 +156,7 @@ const Login = ({navigation}) => {
                 </View>
                 <View style={styles.dont_account_account}>
                   <Text style={styles.already_have_account}>
-                    Don't Have an account ?
+                    Don't Have an account?
                   </Text>
                   <TouchableOpacity activeOpacity={0.6} onPress={onClickSignUp}>
                     <Text style={styles.already_have_sign_up}>Sign Up</Text>
@@ -178,7 +190,6 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
     backgroundColor: colors.DARK,
     justifyContent: 'space-between',
-    alignItems: 'center',
   },
 
   login_text: {
@@ -191,11 +202,12 @@ const styles = StyleSheet.create({
   },
 
   login_image: {
-    width: 120,
-    height: 120,
+    left: units.width / 2.9,
+    width: units.width / 3.2,
+    height: units.width / 3.2,
     borderWidth: 2,
     borderRadius: 100,
-    top: 40,
+    top: 20,
     borderColor: colors.WHITE,
   },
 
@@ -232,11 +244,11 @@ const styles = StyleSheet.create({
   forgotText: {
     color: colors.BLACK,
     fontFamily: 'Roboto-Medium',
-    fontSize: 16,
+    fontSize: 14,
   },
 
   loginContainer: {
-    marginVertical: units.height / 25,
+    marginVertical: units.height / 40,
   },
 
   line: {
@@ -283,7 +295,7 @@ const styles = StyleSheet.create({
   },
 
   image_container: {
-    marginTop: 30,
+    marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',
     marginHorizontal: 20,
@@ -301,8 +313,8 @@ const styles = StyleSheet.create({
   },
 
   dont_account_account: {
-    marginTop: 30,
-    marginHorizontal: 55,
+    marginTop: 20,
+    marginHorizontal: units.width / 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
@@ -316,5 +328,15 @@ const styles = StyleSheet.create({
   already_have_sign_up: {
     color: colors.BLACK,
     fontFamily: 'Roboto-Bold',
+  },
+
+  back_area: {
+    paddingHorizontal: 10,
+    width: 40,
+  },
+
+  back_icon: {
+    color: colors.WHITE,
+    fontSize: 24,
   },
 });

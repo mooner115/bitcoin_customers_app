@@ -41,7 +41,7 @@ const Map = ({navigation}) => {
       <ScrollView>
         <View>
           <CustomMap
-            height={units.height / 1.2}
+            height={units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height)}
             places={Place}
             handleSelect={handleSelect}
             position={position}
@@ -51,14 +51,13 @@ const Map = ({navigation}) => {
             <TouchableOpacity
               onPress={() => navigate(routes.ABOUT)}
               style={{
+                width: units.width / 1.1,
+                marginHorizontal: units.width / 22,
+                padding: units.width / 40,
                 backgroundColor: colors.DARK,
-                height: 150,
-                marginHorizontal: 25,
-                padding: 15,
                 borderRadius: 20,
                 position: 'absolute',
-                bottom: 50,
-                justifyContent: 'center',
+                bottom: units.height / 12,
               }}
               activeOpacity={0.8}>
               <View
@@ -78,28 +77,28 @@ const Map = ({navigation}) => {
                     }}>
                     <AntDesign
                       name="star"
-                      style={{color: colors.ORANGE, fontSize: 15}}
+                      style={{color: colors.ORANGE, fontSize: units.width / 30}}
                     />
                     <AntDesign
                       name="star"
-                      style={{color: colors.ORANGE, fontSize: 15}}
+                      style={{color: colors.ORANGE, fontSize: units.width / 30}}
                     />
                     <AntDesign
                       name="star"
-                      style={{color: colors.ORANGE, fontSize: 15}}
+                      style={{color: colors.ORANGE, fontSize: units.width / 30}}
                     />
                     <AntDesign
                       name="star"
-                      style={{color: colors.ORANGE, fontSize: 15}}
+                      style={{color: colors.ORANGE, fontSize: units.width / 30}}
                     />
                     <AntDesign
                       name="staro"
-                      style={{color: colors.WHITE, fontSize: 15}}
+                      style={{color: colors.WHITE, fontSize: units.width / 30}}
                     />
                     <Text
                       style={{
                         color: colors.WHITE,
-                        right: -6,
+                        marginLeft: 5,
                         fontFamily: 'Roboto-medium',
                         fontSize: 12,
                       }}>
@@ -107,7 +106,7 @@ const Map = ({navigation}) => {
                     </Text>
                   </View>
                 </View>
-                <View style={{paddingHorizontal: 10}}>
+                <View style={{marginLeft: 5}}>
                   <Text
                     style={{
                       color: colors.WHITE,
@@ -116,7 +115,7 @@ const Map = ({navigation}) => {
                     }}>
                     {detail.name}
                   </Text>
-                  <Text style={{color: colors.GREY, fontSize: 11}}>
+                  <Text style={{color: colors.WHITE, fontSize: 11}}>
                     open :{' '}
                     <Text style={{color: colors.WHITE}}>{detail.time}</Text>{' '}
                   </Text>
@@ -126,8 +125,7 @@ const Map = ({navigation}) => {
                       flexDirection: 'row',
                       alignItems: 'center',
                       justifyContent: 'space-around',
-                      width: 160,
-                      left: -10,
+                      width: units.width / 2.5,
                     }}>
                     {detail.isRecreational && (
                       <TouchableOpacity
@@ -135,9 +133,8 @@ const Map = ({navigation}) => {
                           color: colors.WHITE,
                           borderRadius: 5,
                           paddingVertical: 3,
-                          marginVertical: 10,
+                          paddingHorizontal: 5,
                           backgroundColor: colors.ORANGE,
-                          width: 80,
                         }}>
                         <Text
                           style={{
@@ -156,9 +153,9 @@ const Map = ({navigation}) => {
                           color: colors.WHITE,
                           borderRadius: 5,
                           paddingVertical: 3,
+                          paddingHorizontal: 5,
                           marginVertical: 10,
                           backgroundColor: colors.GREEN,
-                          width: 60,
                         }}>
                         <Text
                           style={{
@@ -173,7 +170,7 @@ const Map = ({navigation}) => {
                   </View>
                   <Text
                     style={{
-                      color: colors.GREY,
+                      color: colors.WHITE,
                       fontSize: 11,
                       fontFamily: 'Roboto-Regular',
                     }}>
@@ -182,7 +179,7 @@ const Map = ({navigation}) => {
                   <Text
                     style={{
                       color: colors.WHITE,
-                      fontSize: 15,
+                      fontSize: 12,
                       letterSpacing: 0.3,
                       fontFamily: 'Roboto-Medium',
                     }}>
@@ -197,8 +194,8 @@ const Map = ({navigation}) => {
                         : require('../../../assets/images/love.png')
                     }
                     style={{
-                      width: 30,
-                      height: 26,
+                      width: units.width / 13,
+                      height: units.height / 25,
                       tintColor: detail.isFavourite
                         ? colors.ORANGE
                         : colors.WHITE,
@@ -225,8 +222,8 @@ const styles = StyleSheet.create({
   },
 
   profile_image: {
-    width: 90,
-    height: 90,
-    marginHorizontal: 10,
+    width: units.width / 5,
+    height: units.width / 5,
+    marginHorizontal: 5,
   },
 });

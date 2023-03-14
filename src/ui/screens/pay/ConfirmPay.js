@@ -12,6 +12,7 @@ import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
 import {routes} from '../../../navigation/routes';
 import {colors} from '../../../themes/Colors';
+import {units} from '../../../themes/Units';
 
 const ConfirmPay = ({navigation}) => {
   const navigate = route => {
@@ -32,7 +33,6 @@ const ConfirmPay = ({navigation}) => {
             <Text
               style={{
                 fontSize: 17,
-                top: -6,
                 fontFamily: 'Roboto-Bold',
                 color: colors.WHITE,
               }}>
@@ -82,7 +82,8 @@ const ConfirmPay = ({navigation}) => {
           </View>
           <View
             style={{
-              marginTop: 20,
+              marginTop: units.height / 41,
+              paddingHorizontal: units.width / 20,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -91,7 +92,6 @@ const ConfirmPay = ({navigation}) => {
                 fontFamily: 'Roboto-Regular',
                 fontSize: 14,
                 color: colors.WHITE,
-                left: -80,
               }}>
               Paid To this Address
             </Text>
@@ -102,8 +102,7 @@ const ConfirmPay = ({navigation}) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 backgroundColor: colors.DARKGREY,
-                paddingVertical: 15,
-                padding: 10,
+                padding: 15,
                 marginTop: 15,
                 borderRadius: 7,
                 marginBottom: 5,
@@ -178,12 +177,12 @@ const styles = StyleSheet.create({
 
   amount_area: {
     backgroundColor: colors.DARK,
-    paddingVertical: 20,
+    paddingVertical: units.height / 41,
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
   },
 
   bottom: {
-    marginBottom: 50,
+    marginBottom: units.height / 10,
   },
 });

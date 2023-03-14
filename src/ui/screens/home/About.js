@@ -16,6 +16,7 @@ import {colors} from '../../../themes/Colors';
 import {routes} from '../../../navigation/routes';
 import CustomMap from '../../components/CustomMap';
 import {Place} from '../../../_mock/Place';
+import {units} from '../../../themes/Units';
 
 const About = ({navigation}) => {
   const [places, setPlaces] = useState([Place[0]]);
@@ -33,7 +34,7 @@ const About = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.ABOUT} />
 
-      <ScrollView>
+      <ScrollView style={styles.scroll_area}>
         <View style={styles.detail_area}>
           <View
             style={{
@@ -406,8 +407,11 @@ export default About;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.WHITE,
+  },
+
+  scroll_area: {
+    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
   },
 
   detail_area: {

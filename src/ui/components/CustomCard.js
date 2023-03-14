@@ -3,6 +3,7 @@ import {View, TouchableOpacity, Image, Text, StyleSheet} from 'react-native';
 import {colors} from '../../themes/Colors';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {routes} from '../../navigation/routes';
+import {units} from '../../themes/Units';
 
 const CustomCard = ({navigation, data}) => {
   return (
@@ -10,12 +11,10 @@ const CustomCard = ({navigation, data}) => {
       onPress={() => navigation.navigate(routes.ABOUT)}
       style={{
         backgroundColor: colors.DARK,
-        height: 150,
-        paddingVertical: 15,
-        marginBottom: 12,
+        padding: units.width / 40,
+        marginBottom: units.height / 70,
         borderRadius: 20,
         justifyContent: 'center',
-        paddingHorizontal: 15,
       }}
       activeOpacity={0.8}>
       <View
@@ -37,7 +36,7 @@ const CustomCard = ({navigation, data}) => {
               name="star"
               style={{
                 color: colors.ORANGE,
-                fontSize: 15,
+                fontSize: units.width / 30,
                 paddingHorizontal: 1,
               }}
             />
@@ -45,7 +44,7 @@ const CustomCard = ({navigation, data}) => {
               name="star"
               style={{
                 color: colors.ORANGE,
-                fontSize: 15,
+                fontSize: units.width / 30,
                 paddingHorizontal: 1,
               }}
             />
@@ -53,7 +52,7 @@ const CustomCard = ({navigation, data}) => {
               name="star"
               style={{
                 color: colors.ORANGE,
-                fontSize: 15,
+                fontSize: units.width / 30,
                 paddingHorizontal: 1,
               }}
             />
@@ -61,26 +60,26 @@ const CustomCard = ({navigation, data}) => {
               name="star"
               style={{
                 color: colors.ORANGE,
-                fontSize: 15,
+                fontSize: units.width / 30,
                 paddingHorizontal: 1,
               }}
             />
             <AntDesign
               name="staro"
-              style={{color: colors.WHITE, fontSize: 15}}
+              style={{color: colors.WHITE, fontSize: units.width / 30}}
             />
             <Text
               style={{
                 color: colors.WHITE,
-                right: -6,
                 fontFamily: 'Roboto-Medium',
                 fontSize: 12,
+                marginLeft: 5,
               }}>
               {data.totalRating}
             </Text>
           </View>
         </View>
-        <View style={{width: 182, left: -3}}>
+        <View style={{width: units.width / 2.2}}>
           <Text
             style={{
               color: colors.WHITE,
@@ -103,8 +102,7 @@ const CustomCard = ({navigation, data}) => {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-around',
-              width: 160,
-              left: -10,
+              width: units.width / 2.5,
             }}>
             {data.isRecreational && (
               <TouchableOpacity
@@ -112,9 +110,9 @@ const CustomCard = ({navigation, data}) => {
                   color: colors.WHITE,
                   borderRadius: 5,
                   paddingVertical: 3,
+                  paddingHorizontal: 5,
                   marginVertical: 10,
                   backgroundColor: colors.ORANGE,
-                  width: 80,
                 }}>
                 <Text
                   style={{
@@ -132,9 +130,9 @@ const CustomCard = ({navigation, data}) => {
                   color: colors.WHITE,
                   borderRadius: 5,
                   paddingVertical: 3,
+                  paddingHorizontal: 5,
                   marginVertical: 10,
                   backgroundColor: colors.GREEN,
-                  width: 60,
                 }}>
                 <Text
                   style={{
@@ -150,7 +148,7 @@ const CustomCard = ({navigation, data}) => {
           <Text
             style={{
               color: colors.WHITE,
-              fontSize: 11,
+              fontSize: 10,
               fontFamily: 'Roboto-Regular',
             }}>
             {data.address}
@@ -158,7 +156,7 @@ const CustomCard = ({navigation, data}) => {
           <Text
             style={{
               color: colors.WHITE,
-              fontSize: 15,
+              fontSize: units.width / 30,
               letterSpacing: 0.3,
               fontFamily: 'Roboto-Medium',
             }}>
@@ -188,8 +186,8 @@ export default CustomCard;
 
 const styles = StyleSheet.create({
   profile_image: {
-    width: 90,
-    height: 90,
-    marginHorizontal: 10,
+    width: units.width / 5,
+    height: units.width / 5,
+    marginHorizontal: 5,
   },
 });

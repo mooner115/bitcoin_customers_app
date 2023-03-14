@@ -14,6 +14,7 @@ import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
 import {colors} from '../../../themes/Colors';
 import {routes} from '../../../navigation/routes';
+import {units} from '../../../themes/Units';
 
 const Review = ({navigation}) => {
   const navigate = route => {
@@ -24,7 +25,7 @@ const Review = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.REVIEW} />
 
-      <ScrollView>
+      <ScrollView style={styles.scroll_area}>
         <View style={styles.detail_area}>
           <View
             style={{
@@ -492,8 +493,11 @@ export default Review;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.WHITE,
+  },
+
+  scroll_area: {
+    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
   },
 
   detail_area: {

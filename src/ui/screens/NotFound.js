@@ -18,7 +18,6 @@ export default NotFound;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.WHITE,
   },
   list: {

@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import CustomCard from './CustomCard';
 import {Stores} from '../../_mock/Stores';
 import {routes} from '../../navigation/routes';
+import {units} from '../../themes/Units';
 
 const StoreList = ({navigation, route}) => {
   const [pathname, setPathName] = useState('');
@@ -16,7 +17,11 @@ const StoreList = ({navigation, route}) => {
   }, [route]);
 
   return (
-    <View style={{paddingHorizontal: 15, marginBottom: 40}}>
+    <View
+      style={{
+        paddingHorizontal: units.width / 25,
+        marginBottom: units.height / 10,
+      }}>
       {stores.map(store => (
         <CustomCard navigation={navigation} data={store} key={store.id} />
       ))}
