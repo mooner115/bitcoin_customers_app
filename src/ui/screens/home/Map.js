@@ -34,9 +34,6 @@ const Map = ({navigation}) => {
     const selected = Place.filter(place => place.id === position);
     setDetail(selected[0]);
   }, [position]);
-
-  console.log(units.height);
-
   return (
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.MAP} />
@@ -44,7 +41,7 @@ const Map = ({navigation}) => {
       <ScrollView>
         <View>
           <CustomMap
-            height={Platform.OS === 'ios' ? units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height - 1 / 14.8) : units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height)}
+            height={units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height)}
             places={Place}
             handleSelect={handleSelect}
             position={position}
