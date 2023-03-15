@@ -70,7 +70,7 @@ const ManualRequest = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.MANUALREQUEST} />
 
-      <ScrollView>
+      <ScrollView style={styles.scroll_area}>
         <View style={styles.amount_area}>
           <View style={styles.title_area}>
             <TouchableOpacity style={styles.back_area} onPress={goBack}>
@@ -254,6 +254,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.WHITE,
+  },
+
+  scroll_area: {
+    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
   },
 
   back_area: {

@@ -67,7 +67,7 @@ const ManualPay = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.MANUALPAY} />
 
-      <ScrollView>
+      <ScrollView style={styles.scroll_area}>
         <View style={styles.amount_area}>
           <View style={styles.title_area}>
             <TouchableOpacity style={styles.back_area} onPress={goBack}>
@@ -174,8 +174,11 @@ export default ManualPay;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.WHITE,
+  },
+
+  scroll_area: {
+    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
   },
 
   title_area: {

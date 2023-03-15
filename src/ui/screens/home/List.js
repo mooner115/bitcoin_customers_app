@@ -14,7 +14,6 @@ import {units} from '../../../themes/Units';
 import Header from '../../layouts/Header';
 import {routes} from '../../../navigation/routes';
 import Footer from '../../layouts/Footer';
-import Stores from '../../../_mock/Stores.js';
 import StoreList from '../../components/StoreList';
 
 const List = ({navigation}) => {

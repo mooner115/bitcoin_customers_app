@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -13,238 +13,91 @@ import {routes} from '../../../navigation/routes';
 import {colors} from '../../../themes/Colors';
 import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
+import {units} from '../../../themes/Units';
 
 const NotifySetting = ({navigation}) => {
+  const data = [
+    {id: 1, title: 'New Followers', inbox: false, phone: false},
+    {id: 2, title: 'Review Liked', inbox: false, phone: true},
+    {id: 3, title: 'Comment Liked', inbox: false, phone: false},
+    {id: 4, title: 'Reply to Comments', inbox: true, phone: false},
+    {id: 5, title: 'Reply to reviews', inbox: false, phone: false},
+    {
+      id: 6,
+      title: 'New post From a Following Store',
+      inbox: false,
+      phone: false,
+    },
+    {id: 7, title: 'New post From a Following user', inbox: true, phone: true},
+    {id: 8, title: 'New Announcement From the App', inbox: false, phone: false},
+    {id: 9, title: 'Waiting From the App', inbox: true, phone: false},
+    {id: 10, title: 'New Store', inbox: false, phone: false},
+  ];
+
+  const [list, setList] = useState(data);
+
+  const handleInbox = id => {
+    let temp = list;
+    temp[id - 1].inbox = !temp[id - 1].inbox;
+    setList([...temp]);
+  };
+
+  const handlePhone = id => {
+    let temp = list;
+    temp[id - 1].phone = !temp[id - 1].phone;
+    setList([...temp]);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.NOTIFYSETTING} />
 
       <ScrollView>
-        <View style={{marginBottom: 40}}>
+        <View style={{marginBottom: units.height / 20}}>
           <View style={styles.notifications}>
             <Text style={styles.notifications_name}>Notifications Filter</Text>
           </View>
 
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-              <View style={styles.icon_msg_phone}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-            </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>New Followers</Text>
-            </View>
-          </View>
-          {/* Followers etc End */}
+          {list.map(item => (
+            <View style={styles.mobl_name_container} key={item.id}>
+              <View style={styles.mobl_name}>
+                <TouchableOpacity onPress={() => handleInbox(item.id)}>
+                  <View
+                    style={[
+                      styles.icon_msg_phone,
+                      {borderColor: item.inbox ? colors.ORANGE : colors.DARK},
+                    ]}>
+                    <FontAwesome5
+                      name="envelope-o"
+                      style={[
+                        styles.icon_envelop_android,
+                        {color: item.inbox ? colors.ORANGE : colors.DARK},
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
 
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_envelop_android}
-                />
+                <TouchableOpacity onPress={() => handlePhone(item.id)}>
+                  <View
+                    style={[
+                      styles.icon_msg_phone,
+                      {borderColor: item.phone ? colors.ORANGE : colors.DARK},
+                    ]}>
+                    <MaterialIcons
+                      name="phone-android"
+                      style={[
+                        styles.icon_envelop_android,
+                        {color: item.phone ? colors.ORANGE : colors.DARK},
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
               </View>
-              <View style={styles.icon_msg_phone_orange}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_android_envelop}
-                />
-              </View>
-            </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>Review Liked</Text>
-            </View>
-          </View>
-          {/* Followers etc End */}
-
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-              <View style={styles.icon_msg_phone}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_envelop_android}
-                />
+              <View style={styles.name_bg}>
+                <Text style={styles.information}>{item.title}</Text>
               </View>
             </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>Comment Liked</Text>
-            </View>
-          </View>
-          {/* Followers etc End */}
-
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone_orange}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_android_envelop}
-                />
-              </View>
-              <View style={styles.icon_msg_phone}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-            </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>Reply to Comments</Text>
-            </View>
-          </View>
-          {/* Followers etc End */}
-
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-              <View style={styles.icon_msg_phone}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-            </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>Reply to reviews</Text>
-            </View>
-          </View>
-          {/* Followers etc End */}
-
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-              <View style={styles.icon_msg_phone}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-            </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>
-                New post From a Following Store
-              </Text>
-            </View>
-          </View>
-          {/* Followers etc End */}
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone_orange}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_android_envelop}
-                />
-              </View>
-              <View style={styles.icon_msg_phone_orange}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_android_envelop}
-                />
-              </View>
-            </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>
-                New post From a Following user
-              </Text>
-            </View>
-          </View>
-          {/* Followers etc End */}
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-              <View style={styles.icon_msg_phone}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-            </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>
-                New Annoucement From the App
-              </Text>
-            </View>
-          </View>
-          {/* Followers etc End */}
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone_orange}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_android_envelop}
-                />
-              </View>
-              <View style={styles.icon_msg_phone}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-            </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>Waiting From the App</Text>
-            </View>
-          </View>
-          {/* Followers etc End */}
-          {/* Followers etc start */}
-          <View style={styles.mobl_name_container}>
-            <View style={styles.mobl_name}>
-              <View style={styles.icon_msg_phone}>
-                <FontAwesome5
-                  name="envelope-o"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-              <View style={styles.icon_msg_phone}>
-                <MaterialIcons
-                  name="phone-android"
-                  style={styles.icon_envelop_android}
-                />
-              </View>
-            </View>
-            <View style={styles.name_bg}>
-              <Text style={styles.information}>New Followers</Text>
-            </View>
-          </View>
+          ))}
         </View>
       </ScrollView>
 
@@ -323,7 +176,7 @@ const styles = StyleSheet.create({
 
   name_bg: {
     right: 20,
-    width: 220,
+    width: units.width / 1.8,
     paddingHorizontal: 10,
     alignItems: 'flex-start',
   },
