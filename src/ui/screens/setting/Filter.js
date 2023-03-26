@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -14,6 +14,32 @@ import Header from '../../layouts/Header';
 import {units} from '../../../themes/Units';
 
 const Filter = ({navigation}) => {
+  const [isFavourite, setFavourite] = useState(false);
+  const [status, setStatus] = useState(0);
+  const [type, setType] = useState(0);
+  const [unit, setUnit] = useState('Km');
+  const [value, setValue] = useState(0);
+
+  const handleFavourite = () => {
+    setFavourite(!isFavourite);
+  };
+
+  const handleSlide = value => {
+    setValue(value);
+  };
+
+  const handleClear = () => {
+    setFavourite(false);
+    setStatus(0);
+    setType(0);
+    setUnit('Km');
+    setValue(0);
+  };
+
+  const navigate = route => {
+    navigation.navigate(route);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.FILTER} />
@@ -26,21 +52,26 @@ const Filter = ({navigation}) => {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: colors.DARKWHITE,
+              backgroundColor: isFavourite ? colors.DARK : colors.DARKWHITE,
               borderColor: colors.GREY,
               borderWidth: 1,
               padding: 10,
               borderRadius: 7,
-            }}>
+            }}
+            onPress={handleFavourite}>
             <View>
               <FontAwesome5
                 name="heart"
-                style={{color: colors.DARK, fontSize: 22, width: 30}}
+                style={{
+                  color: isFavourite ? colors.WHITE : colors.DARK,
+                  fontSize: 22,
+                  width: 30,
+                }}
               />
             </View>
             <Text
               style={{
-                color: colors.DARK,
+                color: isFavourite ? colors.WHITE : colors.DARK,
                 fontFamily: 'Roboto-Regular',
                 fontSize: 16,
               }}>
@@ -59,16 +90,17 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: colors.DARKWHITE,
+              backgroundColor: status === 1 ? colors.DARK : colors.DARKWHITE,
               borderRadius: 10,
               width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
-            }}>
+            }}
+            onPress={() => setStatus(1)}>
             <Text
               style={{
-                color: colors.BLACK,
+                color: status === 1 ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -79,16 +111,17 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: colors.DARKWHITE,
+              backgroundColor: status === 2 ? colors.DARK : colors.DARKWHITE,
               borderRadius: 10,
               width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
-            }}>
+            }}
+            onPress={() => setStatus(2)}>
             <Text
               style={{
-                color: colors.BLACK,
+                color: status === 2 ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -99,14 +132,17 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: colors.DARK,
+              backgroundColor: status === 3 ? colors.DARK : colors.DARKWHITE,
               borderRadius: 10,
               width: units.width / 3.5,
               paddingVertical: 12,
-            }}>
+              borderWidth: 1,
+              borderColor: colors.GREY,
+            }}
+            onPress={() => setStatus(3)}>
             <Text
               style={{
-                color: colors.WHITE,
+                color: status === 3 ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -116,7 +152,7 @@ const Filter = ({navigation}) => {
           </TouchableOpacity>
         </View>
 
-        <View style={{marginTop: 30}}>
+        <View style={{marginVertical: units.height / 40}}>
           <Text style={{color: colors.BLACK, fontFamily: 'Roboto-Medium'}}>
             Type
           </Text>
@@ -124,7 +160,6 @@ const Filter = ({navigation}) => {
 
         <View
           style={{
-            marginTop: 10,
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -132,16 +167,17 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: colors.DARKWHITE,
+              backgroundColor: type === 1 ? colors.DARK : colors.DARKWHITE,
               borderRadius: 10,
               width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
-            }}>
+            }}
+            onPress={() => setType(1)}>
             <Text
               style={{
-                color: colors.BLACK,
+                color: type === 1 ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -152,16 +188,17 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: colors.DARKWHITE,
+              backgroundColor: type === 2 ? colors.DARK : colors.DARKWHITE,
               borderRadius: 10,
               width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
-            }}>
+            }}
+            onPress={() => setType(2)}>
             <Text
               style={{
-                color: colors.BLACK,
+                color: type === 2 ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -172,14 +209,17 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: colors.DARK,
+              backgroundColor: type === 3 ? colors.DARK : colors.DARKWHITE,
               borderRadius: 10,
               width: units.width / 3.5,
               paddingVertical: 12,
-            }}>
+              borderWidth: 1,
+              borderColor: colors.GREY,
+            }}
+            onPress={() => setType(3)}>
             <Text
               style={{
-                color: colors.WHITE,
+                color: type === 3 ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -208,36 +248,38 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: colors.DARKWHITE,
+              backgroundColor: unit === 'mi' ? colors.DARK : colors.DARKWHITE,
               borderRadius: 5,
               width: units.width / 6,
               borderColor: colors.GREY,
               borderWidth: 1,
               paddingVertical: 5,
-            }}>
+            }}
+            onPress={() => setUnit('mi')}>
             <Text
               style={{
-                color: colors.BLACK,
+                color: unit === 'mi' ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
               }}>
-              Mi
+              mi
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: colors.DARK,
+              backgroundColor: unit === 'Km' ? colors.DARK : colors.DARKWHITE,
               borderRadius: 5,
               width: units.width / 6,
-              borderColor: colors.BLACK,
+              borderColor: colors.GREY,
               borderWidth: 1,
               paddingVertical: 5,
-            }}>
+            }}
+            onPress={() => setUnit('Km')}>
             <Text
               style={{
-                color: colors.WHITE,
+                color: unit === 'Km' ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -262,18 +304,20 @@ const Filter = ({navigation}) => {
                 letterSpacing: 0.6,
                 textAlign: 'center',
               }}>
-              0 Km
+              {value} {unit}
             </Text>
           </TouchableOpacity>
         </View>
 
         <Slider
           style={styles.slider}
-          minimumValue={10}
-          maximumValue={40}
+          minimumValue={0}
+          maximumValue={100}
           maximumTrackTintColor={colors.GREY}
           minimumTrackTintColor={colors.BLACK}
           thumbTintColor={colors.BLACK}
+          onValueChange={handleSlide}
+          value={value}
         />
 
         <View
@@ -292,7 +336,8 @@ const Filter = ({navigation}) => {
               borderColor: colors.GREY,
               borderWidth: 1,
               paddingVertical: 12,
-            }}>
+            }}
+            onPress={handleClear}>
             <Text
               style={{
                 color: colors.BLACK,
@@ -310,7 +355,8 @@ const Filter = ({navigation}) => {
               borderRadius: 10,
               width: units.width / 2.3,
               paddingVertical: 12,
-            }}>
+            }}
+            onPress={() => navigate(routes.MAP)}>
             <Text
               style={{
                 color: colors.WHITE,

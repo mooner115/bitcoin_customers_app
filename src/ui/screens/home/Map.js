@@ -41,7 +41,7 @@ const Map = ({navigation}) => {
       <ScrollView>
         <View>
           <CustomMap
-            height={units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height)}
+            height={units.height * (1 - 1 / 12 - 1 / 12)}
             places={Place}
             handleSelect={handleSelect}
             position={position}
@@ -217,7 +217,6 @@ export default Map;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.WHITE,
   },
 

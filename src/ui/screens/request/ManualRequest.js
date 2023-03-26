@@ -38,17 +38,19 @@ const ManualRequest = ({navigation}) => {
   };
 
   const handleInput = value => {
-    const len = value.indexOf('.') !== -1 ? value.split('.')[1].length : 0;
-    const amount = value;
-    setLength(
-      !len
-        ? 100
-        : value.split('.')[0].length +
-            (isUSD ? FIXED_USD_LENGTH : FIXED_BITCOIN_LENGTH) +
-            1,
-    );
-    setAmount(amount);
-    setCalcBTC(getBTCFromUSD(amount, isUSD));
+    if (!isNaN(value)) {
+      const len = value.indexOf('.') !== -1 ? value.split('.')[1].length : 0;
+      const amount = value;
+      setLength(
+        !len
+          ? 100
+          : value.split('.')[0].length +
+              (isUSD ? FIXED_USD_LENGTH : FIXED_BITCOIN_LENGTH) +
+              1,
+      );
+      setAmount(amount);
+      setCalcBTC(getBTCFromUSD(amount, isUSD));
+    }
   };
 
   const handleSwap = () => {
@@ -132,6 +134,7 @@ const ManualRequest = ({navigation}) => {
                   value={amount}
                   maxLength={length}
                   onChangeText={handleInput}
+                  keyboardType='numeric'
                 />
                 {isUSD ? (
                   <Text
@@ -257,7 +260,7 @@ const styles = StyleSheet.create({
   },
 
   scroll_area: {
-    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
+    height: units.height * (1 - 1 / 12 - 1 / 12),
   },
 
   back_area: {

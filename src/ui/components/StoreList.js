@@ -20,7 +20,7 @@ const StoreList = ({navigation, route}) => {
     <View
       style={{
         paddingHorizontal: units.width / 25,
-        marginBottom: units.height / 10,
+        marginBottom: units.height / 16,
       }}>
       {stores.map(store => (
         <CustomCard navigation={navigation} data={store} key={store.id} />

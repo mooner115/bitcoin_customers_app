@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, TouchableOpacity, Image, Text, StyleSheet} from 'react-native';
 import {colors} from '../../themes/Colors';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -6,6 +6,8 @@ import {routes} from '../../navigation/routes';
 import {units} from '../../themes/Units';
 
 const CustomCard = ({navigation, data}) => {
+  const [isFavourite, setFavourite] = useState(data.isFavourite);
+
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate(routes.ABOUT)}
@@ -163,20 +165,20 @@ const CustomCard = ({navigation, data}) => {
             {data.distance}
           </Text>
         </View>
-        <View>
+        <TouchableOpacity onPress={() => setFavourite(!isFavourite)}>
           <Image
             source={
-              data.isFavourite
+              isFavourite
                 ? require('../../assets/images/love-fill.png')
                 : require('../../assets/images/love.png')
             }
             style={{
               width: 30,
               height: 26,
-              tintColor: data.isFavourite ? colors.ORANGE : colors.WHITE,
+              tintColor: isFavourite ? colors.ORANGE : colors.WHITE,
             }}
           />
-        </View>
+        </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );

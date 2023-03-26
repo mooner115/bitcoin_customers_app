@@ -204,6 +204,8 @@ const styles = StyleSheet.create({
   },
 
   register_text: {
+    marginTop: -28,
+    marginHorizontal: 30,
     textAlign: 'center',
     fontSize: 24,
     letterSpacing: 0.8,
@@ -295,6 +297,7 @@ const styles = StyleSheet.create({
 
   back_area: {
     paddingHorizontal: 10,
+    marginTop: 15,
     width: 40,
   },
 

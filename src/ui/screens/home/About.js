@@ -10,7 +10,6 @@ import {
   Platform,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
 import {colors} from '../../../themes/Colors';
@@ -22,6 +21,7 @@ import {units} from '../../../themes/Units';
 const About = ({navigation}) => {
   const [places, setPlaces] = useState([Place[0]]);
   const [position, setPosition] = useState(0);
+  const [isFavourite, setFavourite] = useState(false);
 
   const navigate = route => {
     navigation.navigate(route);
@@ -186,12 +186,20 @@ const About = ({navigation}) => {
                 8,1 Miles Away
               </Text>
             </View>
-            <View style={{left: 8}}>
-              <FontAwesome5
-                name="heart"
-                style={{color: colors.WHITE, fontSize: 25, width: 30}}
+            <TouchableOpacity onPress={() => setFavourite(!isFavourite)}>
+              <Image
+                source={
+                  isFavourite
+                    ? require('../../../assets/images/love-fill.png')
+                    : require('../../../assets/images/love.png')
+                }
+                style={{
+                  width: 30,
+                  height: 26,
+                  tintColor: isFavourite ? colors.ORANGE : colors.WHITE,
+                }}
               />
-            </View>
+            </TouchableOpacity>
           </View>
 
           <View
@@ -234,13 +242,18 @@ const About = ({navigation}) => {
         </View>
 
         <CustomMap
-          height={350}
+          height={units.height / 2.5}
           places={places}
           handleSelect={handleSelect}
           position={position}
         />
 
-        <View style={{marginHorizontal: 20, marginVertical: 50}}>
+        <View
+          style={{
+            marginHorizontal: units.width / 20,
+            marginTop: units.height / 32,
+            marginBottom: units.height / 16,
+          }}>
           <View
             style={{
               flexDirection: 'row',
@@ -412,7 +425,7 @@ const styles = StyleSheet.create({
   },
 
   scroll_area: {
-    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
+    height: units.height * (1 - 1 / 12 - 1 / 12),
   },
 
   detail_area: {

@@ -194,7 +194,8 @@ const styles = StyleSheet.create({
 
   login_text: {
     fontSize: 24,
-    marginTop: 10,
+    marginTop: -25,
+    marginHorizontal: 30,
     letterSpacing: 0.8,
     textAlign: 'center',
     color: colors.WHITE,
@@ -332,6 +333,7 @@ const styles = StyleSheet.create({
 
   back_area: {
     paddingHorizontal: 10,
+    marginTop: 30,
     width: 40,
   },
 

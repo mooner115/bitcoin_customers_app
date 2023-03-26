@@ -141,6 +141,6 @@ const styles = StyleSheet.create({
   },
 
   scroll_area: {
-    height: units.height * (1 - 1 / 12 - 1 / 12 - 24 / units.height),
+    height: units.height * (1 - 1 / 12 - 1 / 12),
   },
 });
