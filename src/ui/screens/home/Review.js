@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   ScrollView,
   View,
@@ -18,6 +18,8 @@ import {routes} from '../../../navigation/routes';
 import {units} from '../../../themes/Units';
 
 const Review = ({navigation}) => {
+  const [isFavourite, setFavourite] = useState(false);
+
   const navigate = route => {
     navigation.navigate(route);
   };
@@ -177,12 +179,20 @@ const Review = ({navigation}) => {
                 8,1 Miles Away
               </Text>
             </View>
-            <View style={{left: 8}}>
-              <FontAwesome5
-                name="heart"
-                style={{color: colors.WHITE, fontSize: 25, width: 30}}
+            <TouchableOpacity onPress={() => setFavourite(!isFavourite)}>
+              <Image
+                source={
+                  isFavourite
+                    ? require('../../../assets/images/love-fill.png')
+                    : require('../../../assets/images/love.png')
+                }
+                style={{
+                  width: 30,
+                  height: 26,
+                  tintColor: isFavourite ? colors.ORANGE : colors.WHITE,
+                }}
               />
-            </View>
+            </TouchableOpacity>
           </View>
 
           <View
