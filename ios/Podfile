@@ -10,6 +10,8 @@ rn_maps_path = '../node_modules/react-native-maps'
 pod 'react-native-google-maps', :path => rn_maps_path
 
 pod 'GoogleUtilities', :modular_headers => true
+pod 'GoogleMaps'
+pod 'Google-Maps-iOS-Utils'
 # pod 'react-native-config', :path => '../node_modules/react-native-config/react-native-config.podspec'
 
 target 'bLinked' do
