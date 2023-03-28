@@ -4,14 +4,14 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '13.0'
 install! 'cocoapods', :deterministic_uuids => false
 
-# pod 'Google-Maps-iOS-Utils', :git => 'https://github.com/Simon-TechForm/google-maps-ios-utils.git', :branch => 'feat/support-apple-silicon'
+pod 'Google-Maps-iOS-Utils', :git => 'https://github.com/Simon-TechForm/google-maps-ios-utils.git', :branch => 'feat/support-apple-silicon'
 
 rn_maps_path = '../node_modules/react-native-maps'
 pod 'react-native-google-maps', :path => rn_maps_path
 
 pod 'GoogleUtilities', :modular_headers => true
 pod 'GoogleMaps'
-pod 'Google-Maps-iOS-Utils'
+# pod 'Google-Maps-iOS-Utils'
 # pod 'react-native-config', :path => '../node_modules/react-native-config/react-native-config.podspec'
 
 target 'bLinked' do
