@@ -21,6 +21,7 @@ import {units} from '../../../themes/Units';
 const Map = ({navigation}) => {
   const [position, setPosition] = useState(0);
   const [detail, setDetail] = useState({});
+  const [isFavourite, setFavourite] = useState(false);
 
   const navigate = route => {
     navigation.navigate(route);
@@ -33,7 +34,9 @@ const Map = ({navigation}) => {
   useEffect(() => {
     const selected = Place.filter(place => place.id === position);
     setDetail(selected[0]);
+    if (selected[0]) setFavourite(selected[0].isFavourite);
   }, [position]);
+
   return (
     <SafeAreaView style={styles.container}>
       <Header navigation={navigation} route={routes.MAP} />
@@ -186,22 +189,20 @@ const Map = ({navigation}) => {
                     {detail.distance}
                   </Text>
                 </View>
-                <View>
+                <TouchableOpacity onPress={() => setFavourite(!isFavourite)}>
                   <Image
                     source={
-                      detail.isFavourite
+                      isFavourite
                         ? require('../../../assets/images/love-fill.png')
                         : require('../../../assets/images/love.png')
                     }
                     style={{
                       width: units.width / 13,
                       height: units.height / 25,
-                      tintColor: detail.isFavourite
-                        ? colors.ORANGE
-                        : colors.WHITE,
+                      tintColor: isFavourite ? colors.ORANGE : colors.WHITE,
                     }}
                   />
-                </View>
+                </TouchableOpacity>
               </View>
             </TouchableOpacity>
           )}

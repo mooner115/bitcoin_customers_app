@@ -28,8 +28,7 @@ const Register = ({navigation}) => {
   const registerIntialValue = {
     email: '',
     fullName: '',
-    phoneNumber: '',
-    address: '',
+    password: '',
   };
 
   const registerValidationSchema = Yup.object().shape({
@@ -37,8 +36,9 @@ const Register = ({navigation}) => {
       .email('Email is not in correct format')
       .required('This field is required'),
     fullName: Yup.string().required('This field is required'),
-    phoneNumber: Yup.string().required('This field is required'),
-    address: Yup.string().required('This field is required'),
+    password: Yup.string()
+      .min(6, 'Password must be a minimum of 6 characters')
+      .required('This field is required'),
   });
 
   const handleRegister = values => {
@@ -113,33 +113,17 @@ const Register = ({navigation}) => {
                   </View>
 
                   <View style={{marginTop: units.height / 50}}>
-                    <Text style={styles.description}>Phone</Text>
+                    <Text style={styles.description}>Password</Text>
                     <CustomInput
-                      placeHolder="Phone number"
-                      value={values.phoneNumber}
-                      onChangeText={handleChange('phoneNumber')}
-                      width={'100%'}
-                      height={50}
-                      fontSize={16}
-                      type="phone-pad"
-                    />
-                    {errors.phoneNumber && touched.phoneNumber && (
-                      <Text style={styles.errorText}>{errors.phoneNumber}</Text>
-                    )}
-                  </View>
-
-                  <View style={{marginTop: units.height / 50}}>
-                    <Text style={styles.description}>Address</Text>
-                    <CustomInput
-                      placeHolder="Address"
-                      value={values.address}
-                      onChangeText={handleChange('address')}
+                      placeHolder="Password"
+                      value={values.password}
+                      onChangeText={handleChange('password')}
                       width={'100%'}
                       height={50}
                       fontSize={16}
                     />
-                    {errors.address && touched.address && (
-                      <Text style={styles.errorText}>{errors.address}</Text>
+                    {errors.password && touched.password && (
+                      <Text style={styles.errorText}>{errors.password}</Text>
                     )}
                   </View>
 

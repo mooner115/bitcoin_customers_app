@@ -15,7 +15,9 @@ import {units} from '../../../themes/Units';
 
 const Filter = ({navigation}) => {
   const [isFavourite, setFavourite] = useState(false);
-  const [status, setStatus] = useState(0);
+  const [openNow, setOpenNow] = useState(false);
+  const [delivers, setDelivers] = useState(false);
+  const [topRated, setTopRated] = useState(false);
   const [type, setType] = useState(0);
   const [unit, setUnit] = useState('Km');
   const [value, setValue] = useState(0);
@@ -90,17 +92,17 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: status === 1 ? colors.DARK : colors.DARKWHITE,
+              backgroundColor: openNow ? colors.DARK : colors.DARKWHITE,
               borderRadius: 10,
               width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
             }}
-            onPress={() => setStatus(1)}>
+            onPress={() => setOpenNow(!openNow)}>
             <Text
               style={{
-                color: status === 1 ? colors.WHITE : colors.BLACK,
+                color: openNow ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -111,17 +113,17 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: status === 2 ? colors.DARK : colors.DARKWHITE,
+              backgroundColor: delivers ? colors.DARK : colors.DARKWHITE,
               borderRadius: 10,
               width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
             }}
-            onPress={() => setStatus(2)}>
+            onPress={() => setDelivers(!delivers)}>
             <Text
               style={{
-                color: status === 2 ? colors.WHITE : colors.BLACK,
+                color: delivers ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -132,17 +134,17 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: status === 3 ? colors.DARK : colors.DARKWHITE,
+              backgroundColor: topRated ? colors.DARK : colors.DARKWHITE,
               borderRadius: 10,
               width: units.width / 3.5,
               paddingVertical: 12,
               borderWidth: 1,
               borderColor: colors.GREY,
             }}
-            onPress={() => setStatus(3)}>
+            onPress={() => setTopRated(!topRated)}>
             <Text
               style={{
-                color: status === 3 ? colors.WHITE : colors.BLACK,
+                color: topRated ? colors.WHITE : colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
