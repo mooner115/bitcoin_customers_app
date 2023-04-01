@@ -82,7 +82,7 @@ const Register = ({navigation}) => {
               {({values, errors, touched, handleChange, handleSubmit}) => (
                 <>
                   <View style={{marginTop: units.height / 50}}>
-                    <Text style={styles.description}>Name</Text>
+                    <Text style={styles.description}>UserName</Text>
                     <CustomInput
                       placeHolder="Full Name"
                       value={values.fullName}

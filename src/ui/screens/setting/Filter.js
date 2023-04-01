@@ -32,7 +32,9 @@ const Filter = ({navigation}) => {
 
   const handleClear = () => {
     setFavourite(false);
-    setStatus(0);
+    setOpenNow(false);
+    setDelivers(false);
+    setTopRated(false);
     setType(0);
     setUnit('Km');
     setValue(0);
