@@ -197,7 +197,7 @@ const Map = ({navigation}) => {
                         : require('../../../assets/images/love.png')
                     }
                     style={{
-                      width: units.width / 13,
+                      width: units.width / 12,
                       height: units.height / 25,
                       tintColor: isFavourite ? colors.ORANGE : colors.WHITE,
                     }}

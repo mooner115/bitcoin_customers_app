@@ -10,6 +10,7 @@ export const routes = {
   LIST: 'ListScreen',
   ABOUT: 'AboutScreen',
   REVIEW: 'ReviewScreen',
+  WRITEREVIEW: 'WriteReviewScreen',
   LIKED: 'LikedScreen',
   PROFILE: 'ProfileScreen',
   LOGIN: 'LoginScreen',

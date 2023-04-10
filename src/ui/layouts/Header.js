@@ -57,7 +57,8 @@ const Header = ({navigation, route}) => {
           isMatched(routes.MANUALREQUEST) ||
           isMatched(routes.CONFIRMREQUEST) ||
           isMatched(routes.ABOUT) ||
-          isMatched(routes.REVIEW)
+          isMatched(routes.REVIEW) ||
+          isMatched(routes.WRITEREVIEW)
             ? styles.container
             : isMatched(routes.FILTER)
             ? styles.container_white
@@ -113,7 +114,7 @@ const Header = ({navigation, route}) => {
           !isMatched(routes.NOTIFYSETTING) && (
             <View style={styles.input_area}>
               <TextInput
-                placeholder="Search ..."
+                placeholder="Search"
                 value={inputValue}
                 onChangeText={handleInputChange}
                 placeholderTextColor={colors.GREY}
@@ -276,6 +277,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Medium',
     paddingVertical: 4,
     height: units.height / 10.2,
+    paddingLeft: 10,
   },
 
   icon_area: {

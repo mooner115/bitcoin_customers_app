@@ -234,6 +234,13 @@ const Review = ({navigation}) => {
           </View>
         </View>
 
+        <TouchableOpacity
+          style={styles.button}
+          activeOpacity={1}
+          onPress={e => navigate(routes.WRITEREVIEW)}>
+          <Text style={styles.write}>Write a Review</Text>
+        </TouchableOpacity>
+
         <View style={styles.card}>
           <View
             style={{
@@ -545,5 +552,21 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Bold',
     paddingVertical: 5,
     fontSize: 22,
+  },
+
+  button: {
+    marginTop: 30,
+    borderRadius: 10,
+    marginHorizontal: 15,
+    backgroundColor: colors.DARK,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
+
+  write: {
+    color: colors.WHITE,
+    fontSize: 20,
   },
 });

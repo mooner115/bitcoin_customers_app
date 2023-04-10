@@ -82,9 +82,9 @@ const Register = ({navigation}) => {
               {({values, errors, touched, handleChange, handleSubmit}) => (
                 <>
                   <View style={{marginTop: units.height / 50}}>
-                    <Text style={styles.description}>UserName</Text>
+                    <Text style={styles.description}>Username</Text>
                     <CustomInput
-                      placeHolder="Full Name"
+                      placeHolder="Username"
                       value={values.fullName}
                       onChangeText={handleChange('fullName')}
                       width={'100%'}

@@ -69,7 +69,7 @@ const Login = ({navigation}) => {
                   paddingVertical: units.height / 20,
                 }}>
                 <View style={{marginTop: units.height / 20}}>
-                  <Text style={styles.description}>Email Or Login</Text>
+                  <Text style={styles.description}>Email</Text>
                   <CustomInput
                     placeHolder="Email"
                     type="email-address"

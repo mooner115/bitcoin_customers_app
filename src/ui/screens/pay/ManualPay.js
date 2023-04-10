@@ -10,7 +10,6 @@ import {
   SafeAreaView,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../../../themes/Colors';
 import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
@@ -48,7 +47,6 @@ const ManualPay = ({navigation}) => {
       setAmount(amount);
       setCalcBTC(getBTCFromUSD(amount, isUSD));
     }
-
   };
 
   const handleSwap = () => {
@@ -97,7 +95,7 @@ const ManualPay = ({navigation}) => {
                   style={styles.input}
                   value={amount}
                   maxLength={length}
-                  keyboardType='numeric'
+                  keyboardType="numeric"
                   onChangeText={handleInput}
                 />
                 {isUSD ? (
@@ -107,19 +105,25 @@ const ManualPay = ({navigation}) => {
                 )}
               </View>
               <TouchableOpacity onPress={handleSwap}>
-                <Ionicons
-                  name="swap-vertical"
-                  style={{color: colors.WHITE, fontSize: 50, marginLeft: 10}}
+                <Image
+                  source={require('../../../assets/images/exchange.png')}
+                  style={{
+                    color: colors.WHITE,
+                    marginLeft: 10,
+                    width: 40,
+                    height: 40,
+                  }}
                 />
               </TouchableOpacity>
             </View>
 
             <View style={{marginTop: units.height / 27.3}}>
-              <Text style={styles.address_title}>Request From Address</Text>
+              <Text style={styles.address_title}>Sending From Address</Text>
               <TouchableOpacity activeOpacity={0.6} style={styles.address_area}>
                 <TextInput
                   style={styles.address}
                   defaultValue={'0x60aE616a2155Ee3d9A68541Ba454486231'}
+                  editable={false}
                 />
               </TouchableOpacity>
             </View>
@@ -275,6 +279,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.DARKGREY,
     paddingHorizontal: 10,
+    paddingVertical: 5,
     marginTop: units.height / 40,
     borderRadius: 7,
   },

@@ -13,7 +13,6 @@ import BarcodeCreatorViewManager, {
   BarcodeFormat,
 } from 'react-native-barcode-creator';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../../../themes/Colors';
 import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
@@ -134,7 +133,7 @@ const ManualRequest = ({navigation}) => {
                   value={amount}
                   maxLength={length}
                   onChangeText={handleInput}
-                  keyboardType='numeric'
+                  keyboardType="numeric"
                 />
                 {isUSD ? (
                   <Text
@@ -159,9 +158,14 @@ const ManualRequest = ({navigation}) => {
                 )}
               </View>
               <TouchableOpacity onPress={handleSwap}>
-                <Ionicons
-                  name="swap-vertical"
-                  style={{color: colors.WHITE, fontSize: 50, marginLeft: 10}}
+                <Image
+                  source={require('../../../assets/images/exchange.png')}
+                  style={{
+                    color: colors.WHITE,
+                    marginLeft: 10,
+                    width: 40,
+                    height: 40,
+                  }}
                 />
               </TouchableOpacity>
             </View>
@@ -183,6 +187,7 @@ const ManualRequest = ({navigation}) => {
                   justifyContent: 'center',
                   backgroundColor: colors.DARKGREY,
                   paddingHorizontal: 10,
+                  paddingVertical: 5,
                   marginTop: 15,
                   borderRadius: 7,
                 }}>
@@ -292,8 +297,8 @@ const styles = StyleSheet.create({
   },
 
   barcode: {
-    height: units.width,
-    width: units.width,
+    height: units.width / 2,
+    width: units.width / 2,
     alignSelf: 'center',
   },
 

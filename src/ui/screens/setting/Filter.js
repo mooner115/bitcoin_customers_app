@@ -27,7 +27,7 @@ const Filter = ({navigation}) => {
   };
 
   const handleSlide = value => {
-    setValue(value);
+    setValue(parseInt(value));
   };
 
   const handleClear = () => {
@@ -245,24 +245,22 @@ const Filter = ({navigation}) => {
               color: colors.BLACK,
               fontFamily: 'Roboto-Medium',
               fontSize: 20,
-              width: units.width / 4,
+              width: units.width / 2.5,
             }}>
             Distance
           </Text>
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: unit === 'mi' ? colors.DARK : colors.DARKWHITE,
+              backgroundColor: unit === 'mi' ? colors.LIGHTGREY : colors.WHITE,
               borderRadius: 5,
-              width: units.width / 6,
-              borderColor: colors.GREY,
-              borderWidth: 1,
+              width: units.width / 12,
               paddingVertical: 5,
             }}
             onPress={() => setUnit('mi')}>
             <Text
               style={{
-                color: unit === 'mi' ? colors.WHITE : colors.BLACK,
+                color: colors.BLACK,
                 fontFamily: 'Roboto-Medium',
                 letterSpacing: 0.6,
                 textAlign: 'center',
@@ -273,34 +271,12 @@ const Filter = ({navigation}) => {
           <TouchableOpacity
             activeOpacity={0.6}
             style={{
-              backgroundColor: unit === 'Km' ? colors.DARK : colors.DARKWHITE,
+              backgroundColor: unit === 'Km' ? colors.LIGHTGREY : colors.WHITE,
               borderRadius: 5,
-              width: units.width / 6,
-              borderColor: colors.GREY,
-              borderWidth: 1,
+              width: units.width / 12,
               paddingVertical: 5,
             }}
             onPress={() => setUnit('Km')}>
-            <Text
-              style={{
-                color: unit === 'Km' ? colors.WHITE : colors.BLACK,
-                fontFamily: 'Roboto-Medium',
-                letterSpacing: 0.6,
-                textAlign: 'center',
-              }}>
-              Km
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            style={{
-              backgroundColor: colors.DARKWHITE,
-              borderRadius: 5,
-              width: units.width / 4,
-              borderColor: colors.GREY,
-              borderWidth: 1,
-              paddingVertical: 5,
-            }}>
             <Text
               style={{
                 color: colors.BLACK,
@@ -308,9 +284,41 @@ const Filter = ({navigation}) => {
                 letterSpacing: 0.6,
                 textAlign: 'center',
               }}>
-              {value} {unit}
+              Km
             </Text>
           </TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: colors.WHITE,
+              borderRadius: 5,
+              width: units.width / 5,
+              borderColor: colors.LIGHTGREY,
+              borderWidth: 1,
+              paddingVertical: 5,
+              paddingHorizontal: 15,
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <Text
+              style={{
+                color: colors.DARK,
+                fontFamily: 'Roboto-Medium',
+                letterSpacing: 0.6,
+                textAlign: 'center',
+              }}>
+              {value}
+            </Text>
+            <Text
+              style={{
+                color: colors.GREY,
+                fontFamily: 'Roboto-Medium',
+                letterSpacing: 0.6,
+                textAlign: 'center',
+              }}>
+              {unit}
+            </Text>
+          </View>
         </View>
 
         <Slider
