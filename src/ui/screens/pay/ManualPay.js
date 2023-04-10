@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.DARKGREY,
     paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingVertical: 50,
     marginTop: units.height / 40,
     borderRadius: 7,
   },

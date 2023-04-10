@@ -187,7 +187,7 @@ const ManualRequest = ({navigation}) => {
                   justifyContent: 'center',
                   backgroundColor: colors.DARKGREY,
                   paddingHorizontal: 10,
-                  paddingVertical: 10,
+                  paddingVertical: 50,
                   marginTop: 15,
                   borderRadius: 7,
                 }}>
