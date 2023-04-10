@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import BarcodeCreatorViewManager, {
   BarcodeFormat,
@@ -187,7 +188,7 @@ const ManualRequest = ({navigation}) => {
                   justifyContent: 'center',
                   backgroundColor: colors.DARKGREY,
                   paddingHorizontal: 10,
-                  paddingVertical: 50,
+                  paddingVertical: Platform.OS === 'android' ? 0 : 20,
                   marginTop: 15,
                   borderRadius: 7,
                 }}>

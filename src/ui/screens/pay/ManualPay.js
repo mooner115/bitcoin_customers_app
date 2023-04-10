@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors} from '../../../themes/Colors';
@@ -279,7 +280,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.DARKGREY,
     paddingHorizontal: 10,
-    paddingVertical: 50,
+    paddingVertical: Platform.OS === 'android' ? 0 : 20,
     marginTop: units.height / 40,
     borderRadius: 7,
   },
