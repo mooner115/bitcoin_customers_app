@@ -398,6 +398,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
     textAlignVertical: 'top',
+    height: units.height / 5,
   },
 
   buttons: {
