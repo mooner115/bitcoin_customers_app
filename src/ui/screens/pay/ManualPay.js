@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.DARKGREY,
     paddingHorizontal: 10,
-    paddingVertical: Platform.OS === 'android' ? 0 : 20,
+    paddingVertical: Platform.OS === 'android' ? 0 : 15,
     marginTop: units.height / 40,
     borderRadius: 7,
   },

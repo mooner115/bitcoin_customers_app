@@ -188,7 +188,7 @@ const ManualRequest = ({navigation}) => {
                   justifyContent: 'center',
                   backgroundColor: colors.DARKGREY,
                   paddingHorizontal: 10,
-                  paddingVertical: Platform.OS === 'android' ? 0 : 20,
+                  paddingVertical: Platform.OS === 'android' ? 0 : 15,
                   marginTop: 15,
                   borderRadius: 7,
                 }}>
