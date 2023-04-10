@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    height: units.height / 13,
+    height: units.height / 15,
     width: units.width / 1.6,
     borderRadius: 8,
     flexDirection: 'row',
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   },
 
   button_text: {
-    fontSize: 12,
+    fontSize: 14,
     letterSpacing: 0.8,
     textAlign: 'center',
     color: colors.WHITE,
